@@ -21,6 +21,7 @@
       --purple-light: #c084fc;
       --purple-main: #9333ea;
       --purple-dark: #3b0764;
+      --purple-hover: #7e22ce;
       
       --glow-spread: rgba(147, 51, 234, 0.4);
     }
@@ -130,7 +131,7 @@
     }
 
     /* =========================================
-       4. List Header Typography
+       4. Typography & Post List Styles
        ========================================= */
     .header-section {
       text-align: center;
@@ -158,9 +159,6 @@
       color: var(--text-secondary);
     }
 
-    /* =========================================
-       5. Post List Styles
-       ========================================= */
     .post-list {
       display: flex;
       flex-direction: column;
@@ -180,7 +178,6 @@
       overflow: hidden;
     }
 
-    /* 호버 시 글 카드 슬라이드 및 발광 효과 */
     .post-item:hover {
       background: rgba(147, 51, 234, 0.08);
       border-color: rgba(147, 51, 234, 0.4);
@@ -229,7 +226,6 @@
       color: var(--text-secondary);
       font-size: 1rem;
       line-height: 1.6;
-      /* 말줄임표 처리 (2줄) */
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -237,7 +233,7 @@
     }
 
     /* =========================================
-       6. Back Button
+       5. Actions (Back Button)
        ========================================= */
     .actions {
       border-top: 1px solid var(--border-color);
@@ -280,24 +276,181 @@
     }
 
     /* =========================================
-       7. Responsive Design
+       6. Floating Action Button (Write)
+       ========================================= */
+    .fab-write {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-main) 0%, var(--purple-hover) 100%);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 15px var(--glow-spread);
+      cursor: pointer;
+      z-index: 100;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .fab-write:hover {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+    }
+
+    .fab-write svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* =========================================
+       7. Modal (Password & Write Form)
+       ========================================= */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: linear-gradient(145deg, rgba(30, 25, 45, 0.9), rgba(15, 10, 20, 0.95));
+      border: 1px solid var(--border-color);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%;
+      max-width: 500px;
+      transform: translateY(20px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--purple-main);
+      box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--purple-main);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn-submit:hover {
+      background: var(--purple-hover);
+    }
+
+    .error-msg {
+      color: #ef4444;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      display: none;
+    }
+
+    /* Section Toggling */
+    #writeSection { display: none; }
+
+    /* =========================================
+       8. Responsive Design
        ========================================= */
     @media (max-width: 600px) {
-      .list-card {
-        padding: 40px 24px;
-      }
-      h1 {
-        font-size: 2.2rem;
-      }
-      .post-item {
-        padding: 24px 20px;
-      }
-      .post-item h2 {
-        font-size: 1.3rem;
-      }
-      .btn-back {
-        width: 100%;
-      }
+      .list-card { padding: 40px 24px; }
+      h1 { font-size: 2.2rem; }
+      .post-item { padding: 24px 20px; }
+      .post-item h2 { font-size: 1.3rem; }
+      .btn-back { width: 100%; }
+      .fab-write { bottom: 20px; right: 20px; }
+      .modal-content { margin: 20px; padding: 30px 20px; }
     }
   </style>
 </head>
@@ -317,7 +470,6 @@
       </div>
 
       <div class="post-list">
-        
         <a href="posts/first-post.html" class="post-item">
           <time class="post-date">2026.04.09</time>
           <h2>첫 글</h2>
@@ -330,4 +482,125 @@
           <time class="post-date">2026.04.08</time>
           <h2>Github Pages로 블로그 구축하기</h2>
           <p class="post-excerpt">
-            HTML과 CSS를 활용
+            HTML과 CSS를 활용하여 나만의 커스텀 블로그를 만들고 깃허브 페이지를 통해 무료로 호스팅하는 전체 과정을 기록했습니다.
+          </p>
+        </a>
+
+        <a href="#" class="post-item">
+          <time class="post-date">2026.04.05</time>
+          <h2>보안 기초: 웹 취약점 분석 방법론</h2>
+          <p class="post-excerpt">
+            OWASP Top 10을 기반으로 한 웹 애플리케이션 취약점 진단 기초 개념과 방어 기법에 대해 학습한 내용을 요약합니다.
+          </p>
+        </a>
+      </div>
+
+      <div class="actions">
+        <a href="index.html" class="btn-back">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          메인으로 돌아가기
+        </a>
+      </div>
+      
+    </div>
+  </main>
+
+  <div class="fab-write" id="openModalBtn" title="글 작성하기">
+    <svg viewBox="0 0 24 24">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+    </svg>
+  </div>
+
+  <div class="modal-overlay" id="writeModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModalBtn">&times;</button>
+      
+      <div id="authSection">
+        <h2 class="modal-title">관리자 인증</h2>
+        <div class="form-group">
+          <label for="adminPw">글을 작성하려면 비밀번호를 입력하세요.</label>
+          <input type="password" id="adminPw" class="form-control" placeholder="비밀번호 입력">
+          <div class="error-msg" id="pwError">비밀번호가 일치하지 않습니다.</div>
+        </div>
+        <button class="btn-submit" id="checkPwBtn">확인</button>
+      </div>
+
+      <div id="writeSection">
+        <h2 class="modal-title">새 글 작성</h2>
+        <div class="form-group">
+          <label for="postTitle">제목</label>
+          <input type="text" id="postTitle" class="form-control" placeholder="제목을 입력하세요">
+        </div>
+        <div class="form-group">
+          <label for="postContent">내용 (Markdown 또는 HTML)</label>
+          <textarea id="postContent" class="form-control" placeholder="내용을 작성하세요..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="alert('정적 웹사이트(GitHub Pages) 특성상 프론트엔드에서 작성한 글이 파일로 자동 생성/저장되지는 않습니다. 로컬 환경에서 Markdown이나 HTML 파일로 직접 추가해야 합니다.');">작성 완료</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('writeModal');
+    const openBtn = document.getElementById('openModalBtn');
+    const closeBtn = document.getElementById('closeModalBtn');
+    
+    const authSection = document.getElementById('authSection');
+    const writeSection = document.getElementById('writeSection');
+    const checkPwBtn = document.getElementById('checkPwBtn');
+    const adminPwInput = document.getElementById('adminPw');
+    const pwError = document.getElementById('pwError');
+
+    // 사용할 임시 비밀번호 설정
+    const SECRET_PASSWORD = "123";
+
+    // 모달 열기
+    openBtn.addEventListener('click', () => {
+      modal.classList.add('active');
+      // 열 때마다 초기화
+      authSection.style.display = 'block';
+      writeSection.style.display = 'none';
+      adminPwInput.value = '';
+      pwError.style.display = 'none';
+      setTimeout(() => adminPwInput.focus(), 100);
+    });
+
+    // 모달 닫기
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    // 배경 클릭 시 모달 닫기
+    modal.addEventListener('click', (e) => {
+      if(e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    // 비밀번호 확인 로직
+    function verifyPassword() {
+      if (adminPwInput.value === SECRET_PASSWORD) {
+        authSection.style.display = 'none';
+        writeSection.style.display = 'block';
+      } else {
+        pwError.style.display = 'block';
+        adminPwInput.focus();
+      }
+    }
+
+    checkPwBtn.addEventListener('click', verifyPassword);
+
+    // 엔터키 입력 지원
+    adminPwInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        verifyPassword();
+      }
+    });
+  </script>
+
+</body>
+</html>
