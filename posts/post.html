@@ -6,6 +6,8 @@
   <title>글 목록 - Jiwoo Blog</title>
   
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
   <style>
     /* =========================================
@@ -33,12 +35,11 @@
     }
 
     body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-primary);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       line-height: 1.6;
     }
 
@@ -52,7 +53,6 @@
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      overflow: hidden;
       background-color: var(--bg-color);
       background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
@@ -109,15 +109,11 @@
       max-width: 800px;
       padding: 60px 50px;
       border-radius: 24px;
-      
       background: linear-gradient(145deg, rgba(30, 25, 45, 0.6), rgba(15, 10, 20, 0.8));
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border-color);
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
       transform: translateY(20px);
       opacity: 0;
       animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -143,11 +139,17 @@
       background: linear-gradient(135deg, #ffffff 0%, var(--purple-light) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
 
-    h1 .dot { color: var(--purple-main); -webkit-text-fill-color: var(--purple-main); }
-    .header-desc { font-size: 1.1rem; color: var(--text-secondary); }
+    h1 .dot {
+      color: var(--purple-main);
+      -webkit-text-fill-color: var(--purple-main);
+    }
+
+    .header-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+    }
 
     .post-list {
       display: flex;
@@ -157,7 +159,11 @@
       min-height: 100px;
     }
 
-    .loading-msg { text-align: center; color: var(--text-secondary); padding: 20px 0; }
+    .loading-msg {
+      text-align: center;
+      color: var(--text-secondary);
+      padding: 20px 0;
+    }
 
     .post-item-wrapper {
       position: relative;
@@ -170,9 +176,9 @@
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(255, 255, 255, 0.05);
       text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       position: relative;
       overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .post-item:hover {
@@ -195,7 +201,9 @@
       transform-origin: bottom;
     }
 
-    .post-item:hover::before { transform: scaleY(1); }
+    .post-item:hover::before {
+      transform: scaleY(1);
+    }
 
     .post-date {
       display: block;
@@ -214,12 +222,13 @@
       padding-right: 40px; 
     }
 
-    .post-item:hover h2 { color: #ffffff; }
+    .post-item:hover h2 {
+      color: #ffffff;
+    }
 
     .post-excerpt {
       color: var(--text-secondary);
       font-size: 1rem;
-      line-height: 1.6;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -252,12 +261,10 @@
       fill: none;
       stroke: currentColor;
       stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
     }
 
     /* =========================================
-       5. Actions & FAB & Modals
+       5. Actions & Modals
        ========================================= */
     .actions {
       border-top: 1px solid var(--border-color);
@@ -268,11 +275,9 @@
     .btn-back {
       display: inline-flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
       padding: 16px 32px;
       border-radius: 14px;
-      font-size: 1.1rem;
       font-weight: 600;
       text-decoration: none;
       background: rgba(255, 255, 255, 0.03);
@@ -288,9 +293,12 @@
       transform: translateY(-2px);
     }
 
-    .btn-back svg { width: 20px; height: 20px; fill: currentColor; transition: transform 0.3s ease; }
-    .btn-back:hover svg { transform: translateX(-4px); }
-
+    .btn-back svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+    
     .fab-write {
       position: fixed;
       bottom: 40px;
@@ -315,76 +323,191 @@
       box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
     }
 
-    .fab-write svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .fab-write svg {
+      width: 24px;
+      height: 24px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
-    /* Modal Styles */
     .modal-overlay {
       position: fixed;
-      top: 0; left: 0; width: 100vw; height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(10px);
-      display: flex; justify-content: center; align-items: center;
-      z-index: 999; opacity: 0; pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
       transition: opacity 0.3s ease;
     }
 
-    .modal-overlay.active { opacity: 1; pointer-events: auto; }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
     .modal-content {
-      background: linear-gradient(145deg, rgba(30, 25, 45, 0.9), rgba(15, 10, 20, 0.95));
+      background: linear-gradient(145deg, #1e1a26, #110c14);
       border: 1px solid var(--border-color);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
       border-radius: 20px;
-      padding: 40px; width: 100%; max-width: 500px;
+      padding: 40px;
+      width: 100%;
+      max-width: 700px;
       transform: translateY(20px);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
-    .modal-overlay.active .modal-content { transform: translateY(0); }
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
 
     .modal-close {
-      position: absolute; top: 20px; right: 20px; background: none; border: none;
-      color: var(--text-secondary); font-size: 1.5rem; cursor: pointer; transition: color 0.3s ease;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 1.5rem;
+      cursor: pointer;
     }
-    .modal-close:hover { color: var(--text-primary); }
 
-    .modal-title { font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; color: var(--text-primary); }
+    .modal-close:hover {
+      color: var(--text-primary);
+    }
 
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; margin-bottom: 8px; color: var(--text-secondary); font-size: 0.95rem; }
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
     .form-control {
-      width: 100%; padding: 14px 16px; background: rgba(0, 0, 0, 0.3);
-      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 10px;
-      color: var(--text-primary); font-family: inherit; font-size: 1rem;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: 0.3s;
     }
-    .form-control:focus { outline: none; border-color: var(--purple-main); box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2); }
-    textarea.form-control { resize: vertical; min-height: 150px; }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--purple-main);
+      box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.2);
+    }
 
     .btn-submit {
-      width: 100%; padding: 16px; background: var(--purple-main); color: white; border: none;
-      border-radius: 10px; font-size: 1.1rem; font-weight: 600; cursor: pointer; transition: background 0.3s ease; margin-top: 10px;
+      width: 100%;
+      padding: 16px;
+      background: var(--purple-main);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
     }
-    .btn-submit:hover { background: var(--purple-hover); }
-    .btn-danger { background: #ef4444; }
-    .btn-danger:hover { background: #dc2626; }
 
-    .error-msg { color: #ef4444; font-size: 0.9rem; margin-top: 8px; display: none; }
+    .btn-submit:hover {
+      background: var(--purple-hover);
+    }
 
-    /* 모달 섹션 제어용 */
-    .modal-section { display: none; }
-    .modal-section.active { display: block; }
+    .btn-danger {
+      background: #ef4444;
+    }
+
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+
+    .error-msg {
+      color: #ef4444;
+      font-size: 0.9rem;
+      margin-top: 8px;
+      display: none;
+    }
+
+    .modal-section {
+      display: none;
+    }
+
+    .modal-section.active {
+      display: block;
+    }
+
+    /* =========================================
+       6. Quill Editor 다크테마 커스텀
+       ========================================= */
+    .ql-toolbar.ql-snow {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .ql-container.ql-snow {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      font-family: inherit;
+      font-size: 1rem;
+      min-height: 300px;
+    }
+
+    .ql-snow .ql-stroke {
+      stroke: #cbd5e1;
+    }
+
+    .ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+      fill: #cbd5e1;
+    }
+
+    .ql-snow .ql-picker {
+      color: #cbd5e1;
+    }
+
+    .ql-snow .ql-picker-options {
+      background-color: #1e293b;
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .ql-snow .ql-picker-item:hover, .ql-snow .ql-picker-label:hover {
+      color: var(--purple-light);
+    }
+
+    .ql-editor.ql-blank::before {
+      color: rgba(255,255,255,0.3);
+      font-style: normal;
+    }
 
     @media (max-width: 600px) {
       .list-card { padding: 40px 24px; }
-      h1 { font-size: 2.2rem; }
-      .post-item { padding: 24px 20px; }
-      .post-item h2 { font-size: 1.3rem; padding-right: 30px; }
-      .btn-back { width: 100%; }
-      .fab-write { bottom: 20px; right: 20px; }
+      .post-item h2 { font-size: 1.3rem; }
       .modal-content { margin: 20px; padding: 30px 20px; }
-      .btn-delete { top: 20px; right: 10px; }
     }
   </style>
 </head>
@@ -397,7 +520,6 @@
 
   <main class="wrap">
     <div class="list-card">
-      
       <div class="header-section">
         <h1>Posts<span class="dot">.</span></h1>
         <p class="header-desc">지금까지 작성된 글 목록입니다.</p>
@@ -412,10 +534,9 @@
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
           </svg>
-          메인으로 돌아가기
+          메인 웹사이트로
         </a>
       </div>
-      
     </div>
   </main>
 
@@ -431,7 +552,7 @@
       <button class="modal-close" id="closeModalBtn">&times;</button>
       
       <div id="authSection" class="modal-section">
-        <h2 class="modal-title" id="authTitle">관리자 인증</h2>
+        <h2 class="modal-title" id="authTitle" style="color:white;">관리자 인증</h2>
         <div class="form-group">
           <label for="adminPw">작업을 수행하려면 GitHub Token을 입력하세요.</label>
           <input type="password" id="adminPw" class="form-control" placeholder="ghp_ 또는 github_pat_ 로 시작">
@@ -441,14 +562,14 @@
       </div>
 
       <div id="writeSection" class="modal-section">
-        <h2 class="modal-title">새 글 작성</h2>
+        <h2 class="modal-title" style="color:white;">새 글 작성</h2>
         <div class="form-group">
           <label for="postTitle">제목</label>
           <input type="text" id="postTitle" class="form-control" placeholder="제목을 입력하세요">
         </div>
         <div class="form-group">
-          <label for="postContent">내용 (HTML 형태로 입력하세요)</label>
-          <textarea id="postContent" class="form-control" placeholder="<p>안녕하세요!</p>"></textarea>
+          <label>내용</label>
+          <div id="editor-container"></div>
         </div>
         <button class="btn-submit" id="submitPostBtn">GitHub에 발행하기</button>
       </div>
@@ -461,36 +582,50 @@
         <p id="deleteTargetTitle" style="font-weight: bold; margin-bottom: 30px;"></p>
         <button class="btn-submit btn-danger" id="confirmDeleteBtn">영구 삭제하기</button>
       </div>
-
     </div>
   </div>
 
+ <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
  <script>
+  // ==========================================
+  // 0. Quill 에디터 초기화
+  // ==========================================
+  var quill = new Quill('#editor-container', {
+    theme: 'snow',
+    placeholder: '사진, 동영상 링크, 코드를 마음껏 넣어보세요...',
+    modules: {
+      toolbar: [
+        [{ 'header': [1, 2, 3, false] }], // 제목 크기
+        ['bold', 'italic', 'underline', 'strike'], // 글씨체
+        [{ 'color': [] }, { 'background': [] }], // 색상 설정
+        ['blockquote', 'code-block'], // 인용구, 코드블럭
+        [{ 'list': 'ordered'}, { 'list': 'bullet' }], // 리스트
+        ['link', 'image', 'video'], // 미디어 첨부
+        ['clean'] // 포맷 초기화
+      ]
+    }
+  });
+
   // ==========================================
   // 1. 공통 설정
   // ==========================================
   const GITHUB_OWNER = 'jiwoohaha'; 
   const GITHUB_REPO = 'jiwoohaha.github.io'; 
 
-  // 상태 관리 변수들
   let githubToken = ''; 
-  let currentAction = ''; // 'write' 또는 'delete'
-  let targetFileToDelete = null; // 삭제할 파일 정보 객체
+  let currentAction = ''; 
+  let targetFileToDelete = null; 
 
-  // DOM Elements
   const modal = document.getElementById('actionModal');
   const closeBtn = document.getElementById('closeModalBtn');
-  const sections = {
-    auth: document.getElementById('authSection'),
-    write: document.getElementById('writeSection'),
-    delete: document.getElementById('deleteSection')
+  const sections = { 
+    auth: document.getElementById('authSection'), 
+    write: document.getElementById('writeSection'), 
+    delete: document.getElementById('deleteSection') 
   };
   const pwInput = document.getElementById('adminPw');
   const pwError = document.getElementById('pwError');
 
-  // ==========================================
-  // 2. 모달 유틸리티 함수
-  // ==========================================
   function showSection(sectionName) {
     Object.values(sections).forEach(sec => sec.classList.remove('active'));
     sections[sectionName].classList.add('active');
@@ -511,57 +646,64 @@
     }
   }
 
-  closeBtn.addEventListener('click', () => {
-    modal.classList.remove('active');
-    targetFileToDelete = null;
+  closeBtn.addEventListener('click', () => { 
+    modal.classList.remove('active'); 
+    targetFileToDelete = null; 
   });
 
   document.getElementById('checkPwBtn').addEventListener('click', verifyToken);
-  pwInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') verifyToken();
+  
+  pwInput.addEventListener('keypress', (e) => { 
+    if (e.key === 'Enter') verifyToken(); 
   });
 
   function verifyToken() {
     const token = pwInput.value.trim();
     if (token.startsWith('ghp_') || token.startsWith('github_pat_')) {
-      githubToken = token;
+      githubToken = token; 
       showSection(currentAction); 
     } else {
-      pwError.style.display = 'block';
+      pwError.style.display = 'block'; 
       pwInput.focus();
     }
   }
 
   // ==========================================
-  // 3. 글 목록 불러오기 로직 
+  // 2. 글 목록 불러오기 로직
   // ==========================================
   async function loadPostList() {
     const postListContainer = document.getElementById('postListContainer');
-    
     try {
       const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/posts`);
       
-      if (!response.ok) throw new Error("API 요청 실패");
+      if (response.status === 404) {
+        postListContainer.innerHTML = '<div class="loading-msg">아직 작성된 글이 없습니다. 우측 하단의 ✏️ 버튼으로 첫 글을 작성해보세요!</div>';
+        return;
+      }
+      
+      if (response.status === 403) {
+        throw new Error("GitHub API 요청 한도를 초과했습니다. 잠시 후 다시 시도해주세요.");
+      }
+      
+      if (!response.ok) {
+        throw new Error("API 요청 실패");
+      }
       
       const files = await response.json();
       postListContainer.innerHTML = ''; 
       
-      // 정규식을 활용하여 파일명 검증 강화
-      const htmlFiles = files
-        .filter(file => file.name.endsWith('.html') && /^\d{4}-\d{2}-\d{2}-/.test(file.name))
-        .reverse();
+      const htmlFiles = files.filter(file => file.name.endsWith('.html') && /^\d{4}-\d{2}-\d{2}-/.test(file.name)).reverse();
         
       if (htmlFiles.length === 0) {
-        postListContainer.innerHTML = '<div class="loading-msg">아직 작성된 글이 없습니다. 첫 글을 작성해보세요!</div>';
+        postListContainer.innerHTML = '<div class="loading-msg">아직 작성된 글이 없습니다. 우측 하단의 ✏️ 버튼으로 첫 글을 작성해보세요!</div>';
         return;
       }
 
       htmlFiles.forEach(file => {
         const namePart = file.name.replace('.html', '');
         const match = namePart.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
-        
-        let date = match[1].replace(/-/g, '.'); 
-        let title = match[2].replace(/-/g, ' '); 
+        let date = match ? match[1].replace(/-/g, '.') : ''; 
+        let title = match ? match[2].replace(/-/g, ' ') : namePart; 
 
         const postCard = `
           <div class="post-item-wrapper">
@@ -580,7 +722,6 @@
             </button>
           </div>
         `;
-        
         postListContainer.innerHTML += postCard;
       });
 
@@ -588,10 +729,10 @@
         btn.addEventListener('click', (e) => {
           e.preventDefault(); 
           e.stopPropagation(); 
-          targetFileToDelete = {
-            path: btn.getAttribute('data-path'),
-            sha: btn.getAttribute('data-sha'),
-            title: btn.getAttribute('data-title')
+          targetFileToDelete = { 
+            path: btn.getAttribute('data-path'), 
+            sha: btn.getAttribute('data-sha'), 
+            title: btn.getAttribute('data-title') 
           };
           document.getElementById('deleteTargetTitle').innerText = `"${targetFileToDelete.title}"`;
           openModal('delete');
@@ -599,46 +740,75 @@
       });
       
     } catch (error) {
-      console.error(error);
-      postListContainer.innerHTML = '<div class="loading-msg" style="color: #ef4444;">글 목록을 불러올 수 없습니다.</div>';
+      postListContainer.innerHTML = `<div class="loading-msg" style="color: #ef4444;">${error.message || "글 목록을 불러올 수 없습니다."}</div>`;
     }
   }
 
   window.addEventListener('DOMContentLoaded', loadPostList);
 
   // ==========================================
-  // 4. 글 작성 로직
+  // 3. 에디터 글 작성 로직 
   // ==========================================
   document.getElementById('openModalBtn').addEventListener('click', () => openModal('write'));
 
   document.getElementById('submitPostBtn').addEventListener('click', async () => {
     const title = document.getElementById('postTitle').value;
-    const content = document.getElementById('postContent').value;
+    
+    // Quill 에디터 안에 있는 HTML 코드를 그대로 가져옵니다.
+    const content = quill.root.innerHTML;
 
-    if (!title || !content) return alert("제목과 내용을 모두 입력해주세요.");
+    // 빈 텍스트인지 체크 (<p><br></p>는 Quill의 기본 빈 상태)
+    if (!title || content === '<p><br></p>') {
+      return alert("제목과 내용을 모두 입력해주세요.");
+    }
 
     const date = new Date().toISOString().split('T')[0];
     const fileName = title.replace(/ /g, '-'); 
     const path = `posts/${date}-${fileName}.html`; 
 
+    // 생성될 HTML 문서 구조 (에디터에서 작성한 영상/사진이 잘 보이게 CSS 추가)
     const fullHtmlContent = `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${title} - Jiwoo Blog</title>
   <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link href="https://cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
   <style>
-    body { font-family: 'Pretendard', sans-serif; background: #050505; color: #f8fafc; padding: 40px; line-height: 1.8; }
-    .content-box { max-width: 800px; margin: 0 auto; background: #1a1525; padding: 40px; border-radius: 20px; }
-    a.btn-back { display: inline-block; margin-top: 30px; padding: 10px 20px; background: rgba(255,255,255,0.1); color: #fff; text-decoration: none; border-radius: 8px; }
+    body { font-family: 'Pretendard', sans-serif; background: #050505; color: #f8fafc; padding: 40px 20px; line-height: 1.8; margin: 0; }
+    .content-box { max-width: 800px; margin: 0 auto; background: #1e293b; padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    time { color: #c084fc; font-weight: bold; }
+    h1 { font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; }
+    hr { border: 0; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 40px; }
+    
+    /* 본문 내 이미지 및 비디오 반응형 처리 */
+    .ql-editor { padding: 0; overflow-y: visible; }
+    .ql-editor img { max-width: 100%; height: auto; border-radius: 10px; margin: 20px 0; }
+    .ql-video { width: 100%; height: 450px; border: none; border-radius: 10px; margin: 20px 0; }
+    .ql-editor pre.ql-syntax { background-color: #0f172a; color: #f8fafc; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; }
+    .ql-editor blockquote { border-left: 4px solid #9333ea; padding-left: 16px; margin: 20px 0; color: #cbd5e1; font-style: italic; }
+
+    a.btn-back { display: inline-flex; margin-top: 50px; padding: 12px 24px; background: rgba(255,255,255,0.05); color: #fff; text-decoration: none; border-radius: 12px; font-weight: 600; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+    a.btn-back:hover { background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    
+    @media (max-width: 600px) {
+      body { padding: 20px 10px; }
+      .content-box { padding: 30px 20px; }
+      .ql-video { height: 250px; }
+    }
   </style>
 </head>
 <body>
   <div class="content-box">
-    <time style="color:#9333ea;">${date}</time>
+    <time>${date}</time>
     <h1>${title}</h1>
-    <hr style="border-color: rgba(255,255,255,0.1); margin-bottom: 30px;">
-   ${content}
+    <hr>
+    
+    <div class="ql-editor">
+      ${content}
+    </div>
+    
     <br>
     <a href="/posts/post.html" class="btn-back">목록으로 돌아가기</a>
   </div>
@@ -649,14 +819,15 @@
 
     try {
       const btn = document.getElementById('submitPostBtn');
-      btn.innerText = "커밋 중..."; btn.disabled = true;
+      btn.innerText = "커밋 중..."; 
+      btn.disabled = true;
 
       const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
         method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${githubToken}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
+        headers: { 
+          'Authorization': `Bearer ${githubToken}`, 
+          'Accept': 'application/vnd.github.v3+json', 
+          'Content-Type': 'application/json' 
         },
         body: JSON.stringify({ message: `새 글 작성: ${title}`, content: base64Content })
       });
@@ -665,42 +836,43 @@
         alert("글 작성 완료! 1~2분 뒤 새로고침 하세요.");
         modal.classList.remove('active');
         document.getElementById('postTitle').value = '';
-        document.getElementById('postContent').value = '';
-      } else throw await response.json();
+        quill.setContents([]); // 에디터 초기화
+      } else {
+        throw await response.json();
+      }
     } catch (error) {
       alert(`업로드 실패: ${error.message}`);
     } finally {
       const btn = document.getElementById('submitPostBtn');
-      btn.innerText = "GitHub에 발행하기"; btn.disabled = false;
+      btn.innerText = "GitHub에 발행하기"; 
+      btn.disabled = false;
     }
   });
 
   // ==========================================
-  // 5. 글 삭제 로직 
+  // 4. 글 삭제 로직 
   // ==========================================
   document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
     if (!targetFileToDelete) return;
-
+    
     try {
       const btn = document.getElementById('confirmDeleteBtn');
-      btn.innerText = "삭제 중..."; btn.disabled = true;
+      btn.innerText = "삭제 중..."; 
+      btn.disabled = true;
 
       const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFileToDelete.path}`, {
         method: 'DELETE',
-        headers: {
-          'Authorization': `Bearer ${githubToken}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json',
+        headers: { 
+          'Authorization': `Bearer ${githubToken}`, 
+          'Accept': 'application/vnd.github.v3+json', 
+          'Content-Type': 'application/json' 
         },
-        body: JSON.stringify({
-          message: `글 삭제: ${targetFileToDelete.title}`,
-          sha: targetFileToDelete.sha
-        })
+        body: JSON.stringify({ message: `글 삭제: ${targetFileToDelete.title}`, sha: targetFileToDelete.sha })
       });
 
       if (response.ok) {
         alert("글이 삭제되었습니다! 1~2분 뒤 새로고침 하세요.");
-        modal.classList.remove('active');
+        modal.classList.remove('active'); 
         targetFileToDelete = null;
       } else {
         throw await response.json();
@@ -709,7 +881,8 @@
       alert(`삭제 실패: ${error.message}`);
     } finally {
       const btn = document.getElementById('confirmDeleteBtn');
-      btn.innerText = "영구 삭제하기"; btn.disabled = false;
+      btn.innerText = "영구 삭제하기"; 
+      btn.disabled = false;
     }
   });
 </script>
