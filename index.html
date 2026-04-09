@@ -21,8 +21,10 @@
       --purple-light: #c084fc;
       --purple-main: #9333ea;
       --purple-dark: #3b0764;
+      --cyan-main: #06b6d4;
       
       --glow-spread: rgba(147, 51, 234, 0.4);
+      --discord-color: #5865F2;
     }
 
     * {
@@ -32,60 +34,34 @@
     }
 
     body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
       background-color: var(--bg-color);
       color: var(--text-primary);
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       line-height: 1.5;
     }
 
     /* =========================================
-       2. Animated Background
+       2. Animated Background (3 Orbs for richer color)
        ========================================= */
     .bg-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
-      overflow: hidden;
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
       background-color: var(--bg-color);
-      /* Subtle Grid Pattern for Tech Vibe */
       background-image: 
         linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
       background-size: 50px 50px;
     }
 
-    /* Floating Purple Orbs */
     .orb {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.6;
+      position: absolute; border-radius: 50%; filter: blur(120px); opacity: 0.5;
       animation: float 20s infinite ease-in-out alternate;
     }
 
-    .orb-1 {
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--purple-main), transparent 70%);
-      top: -200px;
-      left: -100px;
-      animation-delay: 0s;
-    }
-
-    .orb-2 {
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, var(--purple-dark), transparent 70%);
-      bottom: -150px;
-      right: -100px;
-      animation-duration: 25s;
-    }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, var(--purple-main), transparent 70%); top: -10%; left: -10%; animation-delay: 0s; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, var(--cyan-main), transparent 70%); bottom: -10%; right: -10%; animation-duration: 25s; }
+    .orb-3 { width: 400px; height: 400px; background: radial-gradient(circle, #ec4899, transparent 70%); top: 40%; left: 40%; animation-duration: 18s; animation-direction: alternate-reverse; opacity: 0.3; }
 
     @keyframes float {
       0% { transform: translate(0, 0) scale(1); }
@@ -94,173 +70,137 @@
     }
 
     /* =========================================
-       3. Layout & Card (Glassmorphism)
+       3. Layout & Animated Glowing Card
        ========================================= */
     .wrap {
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 40px 20px;
+      min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 40px 20px;
+    }
+
+    /* 카드를 감싸는 래퍼 (글로우 애니메이션용) */
+    .card-wrapper {
+      position: relative;
+      width: 100%; max-width: 640px;
+      border-radius: 26px;
+      padding: 2px; /* 테두리 두께 */
+      background: linear-gradient(45deg, var(--purple-main), var(--cyan-main), #ec4899, var(--purple-main));
+      background-size: 400% 400%;
+      animation: glowingBorder 8s ease infinite;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(147, 51, 234, 0.3);
+      transform: translateY(20px); opacity: 0;
+      animation: glowingBorder 8s ease infinite, fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes glowingBorder {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .card {
-      position: relative;
-      width: 100%;
-      max-width: 640px;
-      padding: 60px 50px;
-      border-radius: 24px;
-      
-      /* Glass Effect */
-      background: linear-gradient(145deg, rgba(30, 25, 45, 0.6), rgba(15, 10, 20, 0.8));
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid var(--border-color);
-      box-shadow: 
-        0 20px 40px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      
+      width: 100%; height: 100%;
+      padding: 60px 40px; border-radius: 24px;
+      background: linear-gradient(145deg, rgba(20, 15, 30, 0.9), rgba(10, 10, 15, 0.95));
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
       text-align: center;
-      transform: translateY(20px);
-      opacity: 0;
-      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px) !important; /* overrides fadeUp final state slightly */
-      box-shadow: 
-        0 30px 60px rgba(0, 0, 0, 0.6),
-        0 0 40px rgba(147, 51, 234, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      border-color: rgba(139, 92, 246, 0.3);
     }
 
     @keyframes fadeUp {
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     /* =========================================
-       4. Typography
+       4. Avatar & Typography
        ========================================= */
+    .avatar {
+      width: 100px; height: 100px; margin: 0 auto 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan-main), var(--purple-main));
+      padding: 4px; /* 테두리 굵기 */
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+    }
+
+    .avatar-inner {
+      width: 100%; height: 100%;
+      background-color: #0f172a; border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      font-size: 2.5rem;
+    }
+
     h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      /* Text Gradient */
+      font-size: 3.5rem; font-weight: 800; letter-spacing: -0.03em; margin-bottom: 16px;
       background: linear-gradient(135deg, #ffffff 0%, var(--purple-light) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
     }
 
-    h1 .dot {
-      color: var(--purple-main);
-      -webkit-text-fill-color: var(--purple-main);
+    h1 .dot { color: var(--cyan-main); -webkit-text-fill-color: var(--cyan-main); }
+
+    .badges {
+      display: flex; gap: 10px; justify-content: center; margin-bottom: 24px; flex-wrap: wrap;
     }
 
-    p {
-      font-size: 1.15rem;
-      line-height: 1.8;
-      color: var(--text-secondary);
-      margin-bottom: 48px;
-      font-weight: 400;
-      word-break: keep-all;
+    .badge {
+      padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600;
+      background: rgba(255, 255, 255, 0.03); border: 1px solid rgba(255, 255, 255, 0.1);
+      letter-spacing: 0.5px;
     }
 
-    p span.highlight {
-      color: var(--text-primary);
-      font-weight: 600;
+    .badge.sec { color: var(--cyan-main); border-color: rgba(6, 182, 212, 0.3); background: rgba(6, 182, 212, 0.05); }
+    .badge.dev { color: var(--purple-light); border-color: rgba(192, 132, 252, 0.3); background: rgba(192, 132, 252, 0.05); }
+
+    p.desc {
+      font-size: 1.15rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 48px; word-break: keep-all;
     }
+    p.desc span.highlight { color: var(--text-primary); font-weight: 600; }
 
     /* =========================================
        5. Buttons (Actions)
        ========================================= */
     .actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 16px 32px;
-      border-radius: 14px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      position: relative;
-      overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 16px 28px; border-radius: 14px; font-size: 1.05rem; font-weight: 600;
+      text-decoration: none; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
-    /* Primary Button (첫 글 읽기) */
+    /* 글 목록 버튼 */
     .btn-primary {
-      background: linear-gradient(135deg, var(--purple-main) 0%, #7e22ce 100%);
-      color: #ffffff;
-      box-shadow: 0 4px 15px var(--glow-spread);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: linear-gradient(135deg, var(--purple-main) 0%, #7e22ce 100%); color: #ffffff;
+      box-shadow: 0 4px 15px var(--glow-spread); border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6); transform: translateY(-2px); filter: brightness(1.1); }
+
+    /* GitHub 버튼 */
+    .btn-github {
+      background: rgba(255, 255, 255, 0.05); color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+    }
+    .btn-github:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-2px); }
+
+    /* Discord 버튼 */
+    .btn-discord {
+      background: rgba(88, 101, 242, 0.15); color: #fff;
+      border: 1px solid rgba(88, 101, 242, 0.3); backdrop-filter: blur(10px);
+      cursor: pointer;
+    }
+    .btn-discord:hover {
+      background: var(--discord-color); border-color: var(--discord-color);
+      box-shadow: 0 8px 25px rgba(88, 101, 242, 0.4); transform: translateY(-2px);
     }
 
-    .btn-primary:hover {
-      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
-      transform: translateY(-2px);
-      filter: brightness(1.1);
-    }
-
-    /* Secondary Button (GitHub) */
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text-primary);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: rgba(255, 255, 255, 0.2);
-      transform: translateY(-2px);
-    }
-
-    /* SVG Icons styling */
-    .btn svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-      transition: transform 0.3s ease;
-    }
-
-    .btn-primary:hover svg {
-      transform: translateX(4px);
-    }
+    .btn svg { width: 22px; height: 22px; fill: currentColor; transition: transform 0.3s ease; }
+    .btn-primary:hover svg { transform: translateX(4px); }
 
     /* =========================================
        6. Responsive Design
        ========================================= */
     @media (max-width: 600px) {
-      .card {
-        padding: 40px 24px;
-      }
-      h1 {
-        font-size: 2.5rem;
-      }
-      p {
-        font-size: 1rem;
-      }
-      .actions {
-        flex-direction: column;
-      }
-      .btn {
-        width: 100%;
-      }
+      .card { padding: 50px 24px; }
+      h1 { font-size: 2.8rem; }
+      .actions { flex-direction: column; width: 100%; }
+      .btn { width: 100%; }
     }
   </style>
 </head>
@@ -269,33 +209,58 @@
   <div class="bg-container">
     <div class="orb orb-1"></div>
     <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
 
   <main class="wrap">
-    <article class="card">
-      <h1>Jiwoo Blog<span class="dot">.</span></h1>
-      
-      <p>
-        안녕하세요.<br>
-        <span class="highlight">공부, 개발, 보안 기록</span>을 정리하는 블로그입니다.
-      </p>
-
-      <div class="actions">
-        <a href="posts/post.html" class="btn btn-primary">
-          글 목록
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </a>
+    <div class="card-wrapper">
+      <article class="card">
         
-        <a href="https://github.com/jiwoohaha" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-          </svg>
-          My GitHub
-        </a>
-      </div>
-    </article>
+        <div class="avatar">
+          <div class="avatar-inner">
+            👨‍💻
+          </div>
+        </div>
+
+        <h1>Jiwoo Blog<span class="dot">.</span></h1>
+        
+        <div class="badges">
+          <span class="badge sec">Security</span>
+          <span class="badge dev">Development</span>
+          <span class="badge">Tech Log</span>
+        </div>
+        
+        <p class="desc">
+          안녕하세요.<br>
+          <span class="highlight">보안과 개발, 그리고 공부 기록</span>을 정리하는 블로그입니다.
+        </p>
+
+        <div class="actions">
+          
+          <a href="posts/post.html" class="btn btn-primary">
+            글 목록
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </a>
+          
+          <a href="https://github.com/jiwoohaha" target="_blank" rel="noopener noreferrer" class="btn btn-github">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+            </svg>
+            GitHub
+          </a>
+
+          <button onclick="navigator.clipboard.writeText('smartsecurity'); alert('Discord ID(smartsecurity)가 클립보드에 복사되었습니다!');" class="btn btn-discord" title="디스코드 아이디 복사">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/>
+            </svg>
+            smartsecurity
+          </button>
+
+        </div>
+      </article>
+    </div>
   </main>
   
 </body>
