@@ -4,18 +4,98 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jiwoo Blog</title>
+  
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
   <style>
+    /* =========================================
+       1. Reset & Base Variables
+       ========================================= */
+    :root {
+      --bg-color: #050505;
+      --surface-color: rgba(20, 15, 30, 0.4);
+      --border-color: rgba(139, 92, 246, 0.15);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      
+      --purple-light: #c084fc;
+      --purple-main: #9333ea;
+      --purple-dark: #3b0764;
+      
+      --glow-spread: rgba(147, 51, 234, 0.4);
+    }
+
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0f172a;
-      color: #f8fafc;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
     }
 
+    /* =========================================
+       2. Animated Background
+       ========================================= */
+    .bg-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      background-color: var(--bg-color);
+      /* Subtle Grid Pattern for Tech Vibe */
+      background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    /* Floating Purple Orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.6;
+      animation: float 20s infinite ease-in-out alternate;
+    }
+
+    .orb-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--purple-main), transparent 70%);
+      top: -200px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--purple-dark), transparent 70%);
+      bottom: -150px;
+      right: -100px;
+      animation-duration: 25s;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(50px, 30px) scale(1.1); }
+      100% { transform: translate(-30px, -50px) scale(0.9); }
+    }
+
+    /* =========================================
+       3. Layout & Card (Glassmorphism)
+       ========================================= */
     .wrap {
       min-height: 100vh;
       display: flex;
@@ -25,54 +105,198 @@
     }
 
     .card {
+      position: relative;
       width: 100%;
-      max-width: 800px;
-      background-color: #1e293b;
-      border-radius: 20px;
-      padding: 50px 30px;
+      max-width: 640px;
+      padding: 60px 50px;
+      border-radius: 24px;
+      
+      /* Glass Effect */
+      background: linear-gradient(145deg, rgba(30, 25, 45, 0.6), rgba(15, 10, 20, 0.8));
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border-color);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
     }
 
+    .card:hover {
+      transform: translateY(-5px) !important; /* overrides fadeUp final state slightly */
+      box-shadow: 
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(147, 51, 234, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+
+    @keyframes fadeUp {
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* =========================================
+       4. Typography
+       ========================================= */
     h1 {
-      margin-top: 0;
-      font-size: 48px;
-      margin-bottom: 16px;
+      font-size: 3.5rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+      /* Text Gradient */
+      background: linear-gradient(135deg, #ffffff 0%, var(--purple-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h1 .dot {
+      color: var(--purple-main);
+      -webkit-text-fill-color: var(--purple-main);
     }
 
     p {
-      font-size: 20px;
-      line-height: 1.7;
-      color: #cbd5e1;
-      margin-bottom: 30px;
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 48px;
+      font-weight: 400;
+      word-break: keep-all;
     }
 
-    a {
-      display: inline-block;
+    p span.highlight {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* =========================================
+       5. Buttons (Actions)
+       ========================================= */
+    .actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-size: 1.1rem;
+      font-weight: 600;
       text-decoration: none;
-      background-color: #38bdf8;
-      color: #0f172a;
-      font-weight: bold;
-      padding: 14px 24px;
-      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
     }
 
-    a:hover {
-      opacity: 0.9;
+    /* Primary Button (첫 글 읽기) */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple-main) 0%, #7e22ce 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 15px var(--glow-spread);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 8px 25px rgba(147, 51, 234, 0.6);
+      transform: translateY(-2px);
+      filter: brightness(1.1);
+    }
+
+    /* Secondary Button (GitHub) */
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* SVG Icons styling */
+    .btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-primary:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* =========================================
+       6. Responsive Design
+       ========================================= */
+    @media (max-width: 600px) {
+      .card {
+        padding: 40px 24px;
+      }
+      h1 {
+        font-size: 2.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      .actions {
+        flex-direction: column;
+      }
+      .btn {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      <h1>Jiwoo Blog</h1>
+  
+  <div class="bg-container">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
+  <main class="wrap">
+    <article class="card">
+      <h1>Jiwoo Blog<span class="dot">.</span></h1>
+      
       <p>
         안녕하세요.<br>
-        공부, 개발, 보안 기록을 정리하는 블로그입니다.
+        <span class="highlight">공부, 개발, 보안 기록</span>을 정리하는 블로그입니다.
       </p>
-      <a href="posts/first-post.html">첫 글 읽기</a>
-      <a href="https://github.com/jiwoohaha" target="_blank">My GitHub</a>
-    </div>
-  </div>
+
+      <div class="actions">
+        <a href="posts/first-post.html" class="btn btn-primary">
+          첫 글 읽기
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </a>
+        
+        <a href="https://github.com/jiwoohaha" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+          </svg>
+          My GitHub
+        </a>
+      </div>
+    </article>
+  </main>
+  
 </body>
 </html>
