@@ -173,6 +173,22 @@
     .btn-icon:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
     .btn-icon.delete:hover { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
     .btn-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+    .btn-back-list { 
+      display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px dashed var(--cyan-main); 
+      color: var(--cyan-main); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; 
+      margin-bottom: 20px; transition: 0.3s; font-family: 'Pretendard', sans-serif; 
+    }
+    .btn-back-list:hover { background: rgba(0, 221, 255, 0.1); box-shadow: 0 0 10px rgba(0,221,255,0.3); color: #fff; }
+    .btn-back-list svg { width: 20px; height: 20px; flex-shrink: 0; } 
+    
+    .single-post-header { border-bottom: 1px dashed rgba(255,0,255,0.3); padding-bottom: 15px; margin-bottom: 20px; }
+    #singlePostArea .ql-editor { font-size: 1.05rem; line-height: 1.8; color: #e4e4e7; font-family: 'Pretendard', sans-serif; padding: 0; }
+    #singlePostArea .ql-editor img { max-width: 100%; border-radius: 12px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 15px rgba(255,0,255,0.1); }
+    #singlePostArea .ql-editor pre { background: #050505; padding: 20px; border-radius: 12px; overflow-x: auto; border: 1px solid #333; color: var(--matrix-green); font-family: monospace; }
+    #singlePostArea .ql-editor blockquote { border-left: 4px solid var(--cyan-main); padding-left: 16px; margin: 20px 0; color: #aaa; font-style: italic; background: rgba(0,221,255,0.05); padding: 15px; border-radius: 0 8px 8px 0; }
+    #singlePostArea .ql-editor a { color: var(--cyan-main); text-decoration: none; }
+    #singlePostArea .ql-editor a:hover { text-decoration: underline; text-shadow: 0 0 5px var(--cyan-main); }
+    /* 👆👆👆 여기까지 👆👆👆 */
 
     /* =========================================
        6. Right Sidebar (Widgets)
