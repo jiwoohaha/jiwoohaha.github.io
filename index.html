@@ -147,12 +147,6 @@
     .post-list { display: flex; flex-direction: column; gap: 15px; min-height: 300px; }
     .loading-msg { text-align: center; color: var(--cyan-main); font-family: 'Pretendard', sans-serif; padding: 40px 0; animation: blinker 1s linear infinite; }
     
-    /* 🔥 수정된 부분: 사라진 fadeUp 애니메이션 정의 추가 */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
     .post-item-wrapper { position: relative; }
     .post-item {
       display: block; padding: 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.02);
@@ -173,6 +167,13 @@
     .btn-icon:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
     .btn-icon.delete:hover { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
     .btn-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
+
+    /* 🔥 누락되었던 단일 글(Single Post) 뷰 CSS 복구 🔥 */
+    .btn-back-list { display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px dashed var(--cyan-main); color: var(--cyan-main); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; margin-bottom: 20px; transition: 0.3s; font-family: 'Pretendard', sans-serif; }
+    .btn-back-list:hover { background: rgba(0, 221, 255, 0.1); box-shadow: 0 0 10px rgba(0,221,255,0.3); color: #fff; }
+    .btn-back-list svg { width: 16px; height: 16px; }
+    .single-post-header { border-bottom: 1px dashed rgba(255,0,255,0.3); padding-bottom: 15px; margin-bottom: 20px; }
+    #singlePostArea .ql-editor { font-size: 1.05rem; line-height: 1.8; color: #e4e4e7; font-family: 'Pretendard', sans-serif; padding: 0; }
 
     /* =========================================
        6. Right Sidebar (Widgets)
@@ -642,7 +643,6 @@
 
         const title = doc.querySelector('h1') ? doc.querySelector('h1').innerText : '제목 없음';
         
-        // 작성된 글의 HTML 구조에 맞춰 날짜와 카테고리를 가져옴
         const timeEl = doc.querySelector('time');
         const badgeEl = doc.querySelector('.category-badge') || doc.querySelector('.cat-badge');
         
@@ -724,7 +724,7 @@
         const btn = document.getElementById('submitPostBtn'); btn.innerText = "업로드 중..."; btn.disabled = true;
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${githubToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: commitMessage, content: btoa(unescape(encodeURIComponent(fullHtmlContent))), ...(isEditMode && targetFileInfo ? {sha: targetFileInfo.sha} : {}) }) });
         if (response.ok) { 
-          alert(`성공! 1~2분 뒤 반영됩니다.`); 
+          alert(`성공! 확인을 누르면 메인으로 이동합니다.`); 
           modal.classList.remove('active'); document.getElementById('postTitle').value = ''; quill.setContents([]); isEditMode = false; 
           loadPostList(); // 목록 즉시 리로드
         } else throw await response.json();
