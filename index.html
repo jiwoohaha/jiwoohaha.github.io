@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jiwoo Blog - Cyber Dashboard</title>
-  
+
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 
@@ -98,7 +98,7 @@
     .neon-avatar-container { width: 90px; height: 90px; margin: 0 auto 20px; display: flex; justify-content: center; align-items: center; }
     .neon-sign { width: 100%; height: 100%; filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 15px var(--neon-pink)) drop-shadow(0 0 30px var(--neon-pink)); animation: flicker 4s infinite alternate; }
     @keyframes flicker { 0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 15px var(--neon-pink)); opacity: 1; } 20%, 24%, 55% { filter: drop-shadow(0 0 2px var(--neon-pink)); opacity: 0.8; } }
-    
+
     .profile-info { text-align: center; margin-bottom: 20px; }
     .glitch-wrapper { position: relative; display: inline-block; }
     .glitch { font-size: 2rem; font-weight: 900; letter-spacing: 2px; margin-bottom: 5px; color: #fff; text-shadow: 0 0 10px var(--neon-pink); position: relative; }
@@ -145,13 +145,13 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .main-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,0,255,0.2); }
-    .main-header h2 { font-size: 2rem; font-weight: 800; text-shadow: 0 0 8px var(--neon-pink); letter-spacing: 1px; font-family: 'Pretendard', sans-serif; }
-    .main-header span { color: var(--cyan-main); font-family: 'Pretendard', sans-serif; font-size: 0.9rem; }
+    .main-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,0,255,0.2); gap: 12px; }
+    .main-header h2 { font-size: 2rem; font-weight: 800; text-shadow: 0 0 8px var(--neon-pink); letter-spacing: 1px; font-family: 'Pretendard', sans-serif; word-break: keep-all; }
+    .main-header span { color: var(--cyan-main); font-family: 'Pretendard', sans-serif; font-size: 0.9rem; text-align: right; }
 
     .post-list { display: flex; flex-direction: column; gap: 15px; min-height: 300px; }
     .loading-msg { text-align: center; color: var(--cyan-main); font-family: 'Pretendard', sans-serif; padding: 40px 0; animation: blinker 1s linear infinite; }
-    
+
     .post-item-wrapper { position: relative; }
     .post-item {
       display: block; padding: 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.02);
@@ -159,14 +159,14 @@
       transform-style: preserve-3d; transform: perspective(1000px);
     }
     .post-item:hover { background: rgba(255, 0, 255, 0.05); border-color: rgba(255, 0, 255, 0.3); box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(255,0,255,0.1); z-index: 2; }
-    
-    .post-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; font-family: 'Pretendard', sans-serif; }
+
+    .post-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; font-family: 'Pretendard', sans-serif; flex-wrap: wrap; }
     .post-cat-badge { font-size: 0.7rem; padding: 2px 8px; background: rgba(0, 221, 255, 0.1); color: var(--cyan-main); border-radius: 4px; border: 1px solid rgba(0,221,255,0.3); }
     .post-date { font-size: 0.8rem; color: #888; }
-    
-    .post-title { color: #fff; font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; padding-right: 60px; font-family: 'Pretendard', sans-serif; }
+
+    .post-title { color: #fff; font-size: 1.3rem; font-weight: 700; margin-bottom: 6px; padding-right: 60px; font-family: 'Pretendard', sans-serif; word-break: break-word; }
     .post-excerpt { color: var(--text-secondary); font-size: 0.9rem; }
-    
+
     .card-actions { position: absolute; top: 15px; right: 15px; display: flex; gap: 5px; z-index: 10; }
     .btn-icon { background: none; border: none; color: #888; padding: 5px; border-radius: 6px; transition: 0.2s; }
     .btn-icon:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
@@ -181,7 +181,7 @@
     }
     .btn-back-list:hover { background: rgba(0, 221, 255, 0.1); box-shadow: 0 0 10px rgba(0,221,255,0.3); color: #fff; }
     .btn-back-list svg { width: 20px; height: 20px; flex-shrink: 0; } 
-    
+
     .single-post-header { border-bottom: 1px dashed rgba(255,0,255,0.3); padding-bottom: 15px; margin-bottom: 20px; }
     #singlePostArea .ql-editor { font-size: 1.05rem; line-height: 1.8; color: #e4e4e7; font-family: 'Pretendard', sans-serif; padding: 0; }
     #singlePostArea .ql-editor img { max-width: 100%; border-radius: 12px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 15px rgba(255,0,255,0.1); }
@@ -196,7 +196,7 @@
     .widget { margin-bottom: 25px; }
     .widget h3 { font-size: 0.95rem; color: #fff; margin-bottom: 12px; font-family: 'Pretendard', sans-serif; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 5px; display: flex; align-items: center; gap: 6px;}
     .widget h3 svg { width: 14px; height: 14px; stroke: var(--cyan-main); }
-    
+
     .search-box { width: 100%; padding: 10px; background: rgba(0,0,0,0.5); border: 1px solid rgba(0,221,255,0.3); border-radius: 8px; color: var(--cyan-main); font-family: 'Pretendard', sans-serif; font-size: 0.85rem; transition: 0.3s; }
     .search-box:focus { outline: none; border-color: var(--cyan-main); box-shadow: 0 0 10px rgba(0,221,255,0.3); }
     .search-box::placeholder { color: #555; }
@@ -264,30 +264,34 @@
        ========================================= */
     @media (max-width: 1100px) { 
       .layout-wrapper { grid-template-columns: 280px minmax(0, 1fr); } 
-      .sidebar-right { grid-column: span 2; margin-top: 20px; } /* 우측 사이드바 아래로 이동 */
+      .sidebar-right { grid-column: span 2; margin-top: 20px; }
     }
     @media (max-width: 768px) { 
-      /* 모바일에서는 세로로 차곡차곡 쌓임 */
       .layout-wrapper { display: flex; flex-direction: column; padding: 20px 10px; gap: 20px; } 
       .sidebar { position: static; width: 100%; } 
       .category-menu { flex-direction: row; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 10px; } 
       .cat-btn { white-space: nowrap; flex: 0 0 auto; margin-right: 5px; } 
       .sidebar-right { margin-top: 0; }
+      .main-header { flex-direction: column; align-items: flex-start; }
+      .main-header span { text-align: left; }
+      .post-title { padding-right: 52px; font-size: 1.15rem; }
+      .modal-content { width: calc(100% - 20px); padding: 24px 18px; }
+      .fab-write { right: 16px; bottom: 16px; }
     }
   </style>
 </head>
 <body>
-  
+
   <canvas id="matrixCanvas"></canvas>
   <div class="bg-container"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
   <div class="scanlines"></div>
 
   <div class="layout-wrapper">
-    
+
     <aside class="sidebar sidebar-left">
       <div class="neon-box-wrapper">
         <div class="neon-box">
-          
+
           <div class="neon-avatar-container">
             <svg viewBox="0 0 100 100" class="neon-sign" xmlns="http://www.w3.org/2000/svg">
               <ellipse cx="50" cy="65" rx="46" ry="14" stroke="#ff66ff" stroke-width="2.5" fill="none" transform="rotate(-5 50 65)" />
@@ -333,10 +337,10 @@
           </div>
 
           <div class="social-links">
-            <a href="https://github.com/jiwoohaha" target="_blank" class="social-btn">
+            <a href="https://github.com/jiwoohaha" target="_blank" rel="noopener noreferrer" class="social-btn">
               <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.464-1.11-1.464-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg> GitHub
             </a>
-            <a href="https://discord.com/users/603818932427554827" target="_blank" class="social-btn discord">
+            <a href="https://discord.com/users/603818932427554827" target="_blank" rel="noopener noreferrer" class="social-btn discord">
               <svg viewBox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"/></svg> smartsecurity
             </a>
           </div>
@@ -360,7 +364,7 @@
     <main class="main-content">
       <div class="neon-box-wrapper" style="margin-top:0;">
         <div class="neon-box">
-          
+
           <div id="listView">
             <div class="main-header">
               <h2 id="currentCategoryTitle">> 전체보기</h2>
@@ -372,7 +376,7 @@
           </div>
 
           <div id="postView" style="display: none;">
-            <button class="btn-back-list" onclick="backToList()">
+            <button class="btn-back-list" id="backToListBtn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>
               목록으로 돌아가기
             </button>
@@ -386,7 +390,7 @@
     <aside class="sidebar sidebar-right">
       <div class="neon-box-wrapper">
         <div class="neon-box" style="padding: 25px 15px;">
-          
+
           <div class="widget">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg> 검색</h3>
             <input type="text" id="searchInput" class="search-box" placeholder="글 제목 검색...">
@@ -395,11 +399,11 @@
           <div class="widget">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg> 태그</h3>
             <div class="tag-cloud">
-              <span class="tag" onclick="document.getElementById('searchInput').value='Pwn'; document.getElementById('searchInput').dispatchEvent(new Event('keyup'));">#포너블</span>
-              <span class="tag" onclick="document.getElementById('searchInput').value='Web'; document.getElementById('searchInput').dispatchEvent(new Event('keyup'));">#웹보안</span>
-              <span class="tag" onclick="document.getElementById('searchInput').value='Reversing'; document.getElementById('searchInput').dispatchEvent(new Event('keyup'));">#리버싱</span>
-              <span class="tag" onclick="document.getElementById('searchInput').value='Python'; document.getElementById('searchInput').dispatchEvent(new Event('keyup'));">#파이썬</span>
-              <span class="tag" onclick="document.getElementById('searchInput').value='Life'; document.getElementById('searchInput').dispatchEvent(new Event('keyup'));">#일상</span>
+              <span class="tag" data-query="Pwn">#포너블</span>
+              <span class="tag" data-query="Web">#웹보안</span>
+              <span class="tag" data-query="Reversing">#리버싱</span>
+              <span class="tag" data-query="Python">#파이썬</span>
+              <span class="tag" data-query="Life">#일상</span>
             </div>
           </div>
 
@@ -423,7 +427,7 @@
             </div>
           </div>
 
-          <button class="btn-top" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑ 맨 위로</button>
+          <button class="btn-top" id="scrollTopBtn">↑ 맨 위로</button>
         </div>
       </div>
     </aside>
@@ -437,7 +441,7 @@
   <div class="modal-overlay" id="actionModal">
     <div class="modal-content">
       <button class="modal-close" id="closeModalBtn">&times;</button>
-      
+
       <div id="authSection" class="modal-section">
         <h2 class="modal-title" id="authTitle">관리자 인증</h2>
         <div class="form-group">
@@ -473,7 +477,8 @@
   </div>
 
   <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
-  
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+
   <script>
     const cursor = document.createElement('div');
     cursor.classList.add('custom-cursor');
@@ -486,16 +491,165 @@
     const aboutContent = document.getElementById('aboutContent');
     aboutToggleBtn.addEventListener('click', () => { aboutToggleBtn.classList.toggle('open'); aboutContent.classList.toggle('show'); });
 
+    const SVG_EDIT_ICON = '<svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>';
+    const SVG_DELETE_ICON = '<svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>';
+
+    function escapeHtml(value) {
+      const div = document.createElement('div');
+      div.textContent = value == null ? '' : String(value);
+      return div.innerHTML;
+    }
+
+    function slugifyForFilename(value) {
+      const normalized = (value || '').normalize('NFKC').trim();
+      const slug = normalized
+        .replace(/\s+/g, '-')
+        .replace(/[^\w가-힣.-]/g, '')
+        .replace(/-+/g, '-')
+        .replace(/^-+|-+$/g, '');
+      return slug || 'untitled';
+    }
+
+    function isSafeLinkHref(href) {
+      if (!href) return false;
+      const trimmed = href.trim();
+      return /^(https?:|mailto:|tel:|\/|#)/i.test(trimmed);
+    }
+
+    function isSafeImageSrc(src) {
+      if (!src) return false;
+      const trimmed = src.trim();
+      return /^(https?:|data:image\/|blob:|\/)/i.test(trimmed);
+    }
+
+    function isSafeIframeSrc(src) {
+      if (!src) return false;
+      try {
+        const url = new URL(src, window.location.origin);
+        return [
+          'www.youtube.com',
+          'youtube.com',
+          'www.youtube-nocookie.com',
+          'player.vimeo.com'
+        ].includes(url.hostname);
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function hardenFragment(root) {
+      const blockedSelector = 'script, style, object, embed, form, input, button, textarea, select, meta, link, base, svg, math';
+      root.querySelectorAll(blockedSelector).forEach(node => node.remove());
+
+      root.querySelectorAll('*').forEach(el => {
+        [...el.attributes].forEach(attr => {
+          const name = attr.name.toLowerCase();
+          const value = attr.value || '';
+          if (name.startsWith('on')) {
+            el.removeAttribute(attr.name);
+            return;
+          }
+          if ((name === 'href' || name === 'src' || name === 'xlink:href') && /^\s*javascript:/i.test(value)) {
+            el.removeAttribute(attr.name);
+            return;
+          }
+          if (name === 'srcdoc') {
+            el.removeAttribute(attr.name);
+          }
+        });
+
+        const tag = el.tagName.toLowerCase();
+
+        if (tag === 'a') {
+          const href = el.getAttribute('href') || '';
+          if (!isSafeLinkHref(href)) {
+            el.removeAttribute('href');
+          }
+          el.setAttribute('rel', 'noopener noreferrer');
+          if (!el.getAttribute('target')) {
+            el.setAttribute('target', '_blank');
+          }
+        }
+
+        if (tag === 'img') {
+          const src = el.getAttribute('src') || '';
+          if (!isSafeImageSrc(src)) {
+            el.remove();
+            return;
+          }
+          el.setAttribute('loading', 'lazy');
+          el.setAttribute('decoding', 'async');
+          el.setAttribute('referrerpolicy', 'no-referrer');
+        }
+
+        if (tag === 'iframe') {
+          const src = el.getAttribute('src') || '';
+          if (!isSafeIframeSrc(src)) {
+            el.remove();
+            return;
+          }
+          el.setAttribute('sandbox', 'allow-scripts allow-same-origin allow-presentation');
+          el.setAttribute('referrerpolicy', 'no-referrer');
+          el.setAttribute('loading', 'lazy');
+        }
+      });
+
+      return root;
+    }
+
+    function sanitizeRichHtml(html) {
+      const rawHtml = html || '';
+      let clean = rawHtml;
+
+      if (window.DOMPurify) {
+        clean = DOMPurify.sanitize(rawHtml, {
+          USE_PROFILES: { html: true },
+          ADD_TAGS: ['iframe'],
+          ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling', 'target', 'rel', 'loading', 'referrerpolicy', 'sandbox'],
+          FORBID_TAGS: ['script', 'style', 'object', 'embed', 'form', 'input', 'button', 'textarea', 'select', 'meta', 'link', 'base', 'svg', 'math']
+        });
+      }
+
+      const template = document.createElement('template');
+      template.innerHTML = clean;
+      hardenFragment(template.content);
+      return template.innerHTML;
+    }
+
+    function sanitizeTextForDisplay(value) {
+      return value == null ? '' : String(value);
+    }
+
+    function createLoadingMessage(message, color = '') {
+      const div = document.createElement('div');
+      div.className = 'loading-msg';
+      div.textContent = message;
+      if (color) div.style.color = color;
+      return div;
+    }
+
     const termInput = document.getElementById('termInput');
     const termOutput = document.getElementById('termOutput');
-    const termContainer = document.getElementById('terminalContainer');
-    function printTerm(html) { termOutput.innerHTML += `<p>${html}</p>`; termOutput.scrollTop = termOutput.scrollHeight; }
+
+    function printTerm(text) {
+      const p = document.createElement('p');
+      p.textContent = text;
+      termOutput.appendChild(p);
+      termOutput.scrollTop = termOutput.scrollHeight;
+    }
+
     termInput.addEventListener('keydown', function(e) {
       if (e.key === 'Enter') {
         const val = this.value.trim().toLowerCase();
-        if(val) printTerm(`$ ${val}`);
+        if (val) printTerm(`$ ${val}`);
         this.value = '';
-        if (val === 'help') printTerm('- whoami<br>- ping<br>- matrix<br>- clear');
+
+        if (val === 'help') {
+          printTerm('- whoami');
+          printTerm('- ping');
+          printTerm('- matrix');
+          printTerm('- clear');
+        }
         else if (val === 'whoami') printTerm('ROOT: Jiwoohaha');
         else if (val === 'ping') printTerm('PONG. Latency: 1ms');
         else if (val === 'matrix') toggleMatrix();
@@ -511,6 +665,7 @@
     const fontSize = 14; const columns = canvas.width / fontSize;
     const drops = []; for (let x = 0; x < columns; x++) drops[x] = 1;
     let matrixInterval; let matrixOn = false;
+
     function drawMatrix() {
       ctx.fillStyle = 'rgba(5, 0, 2, 0.05)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = '#0F0'; ctx.font = fontSize + 'px monospace';
@@ -521,68 +676,128 @@
         drops[i]++;
       }
     }
+
     function toggleMatrix() {
       matrixOn = !matrixOn;
-      if(matrixOn) { canvas.style.opacity = 0.5; matrixInterval = setInterval(drawMatrix, 33); printTerm('매트릭스 프로토콜 가동.'); }
-      else { canvas.style.opacity = 0; clearInterval(matrixInterval); printTerm('매트릭스 프로토콜 종료.'); }
+      if (matrixOn) {
+        canvas.style.opacity = 0.5;
+        matrixInterval = setInterval(drawMatrix, 33);
+        printTerm('매트릭스 프로토콜 가동.');
+      } else {
+        canvas.style.opacity = 0;
+        clearInterval(matrixInterval);
+        printTerm('매트릭스 프로토콜 종료.');
+      }
     }
+
     window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
 
     function scrambleText(element, finalStr) {
       const chars = '!<>-_\\\\/[]{}—=+*^?#_'; let iterations = 0;
       const interval = setInterval(() => {
         element.innerText = finalStr.split('').map((c, i) => {
-          if(i < iterations) return c; return chars[Math.floor(Math.random() * chars.length)];
+          if (i < iterations) return c;
+          return chars[Math.floor(Math.random() * chars.length)];
         }).join('');
-        if(iterations >= finalStr.length) clearInterval(interval);
-        iterations += 1/2; 
+        if (iterations >= finalStr.length) clearInterval(interval);
+        iterations += 1/2;
       }, 30);
     }
 
-    var quill = new Quill('#editor-container', {
-      theme: 'snow', placeholder: '내용 입력...',
-      modules: { toolbar: [ [{ 'header': [1, 2, 3, false] }], ['bold', 'italic', 'underline', 'strike'], [{ 'color': [] }, { 'background': [] }], ['blockquote', 'code-block'], [{ 'list': 'ordered'}, { 'list': 'bullet' }], ['link', 'image', 'video'], ['clean'] ] }
+    const quill = new Quill('#editor-container', {
+      theme: 'snow',
+      placeholder: '내용 입력...',
+      modules: {
+        toolbar: [
+          [{ 'header': [1, 2, 3, false] }],
+          ['bold', 'italic', 'underline', 'strike'],
+          [{ 'color': [] }, { 'background': [] }],
+          ['blockquote', 'code-block'],
+          [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+          ['link', 'image', 'video'],
+          ['clean']
+        ]
+      }
     });
 
-    const GITHUB_OWNER = 'jiwoohaha'; const GITHUB_REPO = 'jiwoohaha.github.io'; 
-    let githubToken = ''; let currentAction = ''; let targetFileInfo = null; let isEditMode = false; let allPostsData = []; 
-    const modal = document.getElementById('actionModal'); const closeBtn = document.getElementById('closeModalBtn');
-    const sections = { auth: document.getElementById('authSection'), write: document.getElementById('writeSection'), delete: document.getElementById('deleteSection') };
-    const pwInput = document.getElementById('adminPw'); const pwError = document.getElementById('pwError');
+    const GITHUB_OWNER = 'jiwoohaha';
+    const GITHUB_REPO = 'jiwoohaha.github.io';
+    let githubToken = '';
+    let currentAction = '';
+    let targetFileInfo = null;
+    let isEditMode = false;
+    let allPostsData = [];
 
-    function showSection(sectionName) { Object.values(sections).forEach(sec => sec.classList.remove('active')); sections[sectionName].classList.add('active'); }
+    const modal = document.getElementById('actionModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    const sections = {
+      auth: document.getElementById('authSection'),
+      write: document.getElementById('writeSection'),
+      delete: document.getElementById('deleteSection')
+    };
+    const pwInput = document.getElementById('adminPw');
+    const pwError = document.getElementById('pwError');
+
+    function showSection(sectionName) {
+      Object.values(sections).forEach(sec => sec.classList.remove('active'));
+      sections[sectionName].classList.add('active');
+    }
 
     function openModal(action) {
-      currentAction = action; modal.classList.add('active'); pwError.style.display = 'none';
-      if (githubToken) { if (action === 'edit') fetchPostContentForEdit(); else showSection(action); } 
-      else {
+      currentAction = action;
+      modal.classList.add('active');
+      pwError.style.display = 'none';
+
+      if (githubToken) {
+        if (action === 'edit') fetchPostContentForEdit();
+        else showSection(action);
+      } else {
         showSection('auth');
         let authTitle = '관리자 인증';
-        if(action === 'delete') authTitle = '삭제 권한 인증'; if(action === 'edit') authTitle = '수정 권한 인증'; if(action === 'write') authTitle = '작성 권한 인증';
+        if (action === 'delete') authTitle = '삭제 권한 인증';
+        if (action === 'edit') authTitle = '수정 권한 인증';
+        if (action === 'write') authTitle = '작성 권한 인증';
         document.getElementById('authTitle').innerText = authTitle;
-        pwInput.value = ''; setTimeout(() => pwInput.focus(), 100);
+        pwInput.value = '';
+        setTimeout(() => pwInput.focus(), 100);
       }
     }
 
-    closeBtn.addEventListener('click', () => { modal.classList.remove('active'); targetFileInfo = null; isEditMode = false; });
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+      targetFileInfo = null;
+      isEditMode = false;
+    });
+
     document.getElementById('checkPwBtn').addEventListener('click', verifyToken);
     pwInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyToken(); });
 
     function verifyToken() {
       const token = pwInput.value.trim();
-      if (token.startsWith('ghp_') || token.startsWith('github_pat_')) { githubToken = token; if (currentAction === 'edit') fetchPostContentForEdit(); else showSection(currentAction); } 
-      else { pwError.style.display = 'block'; pwInput.focus(); }
+      if (token.startsWith('ghp_') || token.startsWith('github_pat_')) {
+        githubToken = token;
+        if (currentAction === 'edit') fetchPostContentForEdit();
+        else showSection(currentAction);
+      } else {
+        pwError.style.display = 'block';
+        pwInput.focus();
+      }
     }
 
     async function loadPostList() {
       const postListContainer = document.getElementById('postListContainer');
       try {
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/posts?t=${new Date().getTime()}`);
-        if (response.status === 404 || !response.ok) { postListContainer.innerHTML = '<div class="loading-msg">조건에 맞는 글이 없습니다.</div>'; document.getElementById('currentCategoryCount').innerText = "0개의 글"; return; }
-        
+        if (response.status === 404 || !response.ok) {
+          postListContainer.innerHTML = '';
+          postListContainer.appendChild(createLoadingMessage('조건에 맞는 글이 없습니다.'));
+          document.getElementById('currentCategoryCount').innerText = '0개의 글';
+          return;
+        }
+
         const files = await response.json();
         const htmlFiles = files.filter(file => file.name.endsWith('.html')).reverse();
-        
+
         allPostsData = htmlFiles.map(file => {
           const namePart = file.name.replace('.html', '');
           const match = namePart.match(/^(\d{4}-\d{2}-\d{2})-\[(.+?)\]-(.+)$/);
@@ -591,14 +806,106 @@
             date = match[1].replace(/-/g, '.'); 
             category = match[2].replace(/_/g, '/'); 
             title = match[3].replace(/-/g, ' '); 
-          } 
-          else { const oldMatch = namePart.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/); if(oldMatch) { date = oldMatch[1].replace(/-/g, '.'); title = oldMatch[2].replace(/-/g, ' '); } }
+          } else {
+            const oldMatch = namePart.match(/^(\d{4}-\d{2}-\d{2})-(.+)$/);
+            if (oldMatch) {
+              date = oldMatch[1].replace(/-/g, '.');
+              title = oldMatch[2].replace(/-/g, ' ');
+            }
+          }
           return { ...file, date, category, title };
         });
 
         document.getElementById('count-all').innerText = allPostsData.length;
         renderPosts('all');
-      } catch (error) { postListContainer.innerHTML = `<div class="loading-msg" style="color: #ef4444;">글 목록을 불러올 수 없습니다.</div>`; }
+      } catch (error) {
+        postListContainer.innerHTML = '';
+        postListContainer.appendChild(createLoadingMessage('글 목록을 불러올 수 없습니다.', '#ef4444'));
+      }
+    }
+
+    function createPostCard(post, index) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'post-item-wrapper';
+      wrapper.style.animation = 'fadeUp 0.5s ease forwards';
+      wrapper.style.opacity = '0';
+      wrapper.style.animationDelay = `${index * 0.1}s`;
+
+      const link = document.createElement('a');
+      link.href = '#';
+      link.className = 'post-item';
+      link.addEventListener('click', (event) => viewPost(post.path, event));
+
+      const meta = document.createElement('div');
+      meta.className = 'post-meta';
+
+      const badge = document.createElement('span');
+      badge.className = 'post-cat-badge';
+      badge.textContent = sanitizeTextForDisplay(post.category);
+
+      const time = document.createElement('time');
+      time.className = 'post-date';
+      time.textContent = sanitizeTextForDisplay(post.date);
+
+      meta.appendChild(badge);
+      meta.appendChild(time);
+
+      const title = document.createElement('h3');
+      title.className = 'post-title';
+      title.dataset.title = sanitizeTextForDisplay(post.title);
+      title.textContent = sanitizeTextForDisplay(post.title);
+
+      const excerpt = document.createElement('p');
+      excerpt.className = 'post-excerpt';
+      excerpt.textContent = '클릭하여 읽기 >';
+
+      link.appendChild(meta);
+      link.appendChild(title);
+      link.appendChild(excerpt);
+
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+
+      const editBtn = document.createElement('button');
+      editBtn.className = 'btn-icon edit btn-edit';
+      editBtn.title = '수정';
+      editBtn.dataset.path = post.path;
+      editBtn.dataset.sha = post.sha;
+      editBtn.dataset.title = sanitizeTextForDisplay(post.title);
+      editBtn.dataset.category = sanitizeTextForDisplay(post.category);
+      editBtn.innerHTML = SVG_EDIT_ICON;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'btn-icon delete btn-delete';
+      deleteBtn.title = '삭제';
+      deleteBtn.dataset.path = post.path;
+      deleteBtn.dataset.sha = post.sha;
+      deleteBtn.dataset.title = sanitizeTextForDisplay(post.title);
+      deleteBtn.innerHTML = SVG_DELETE_ICON;
+
+      actions.appendChild(editBtn);
+      actions.appendChild(deleteBtn);
+
+      wrapper.appendChild(link);
+      wrapper.appendChild(actions);
+
+      return wrapper;
+    }
+
+    function addCardMotion(item) {
+      item.addEventListener('mousemove', e => {
+        const rect = item.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const xc = rect.width / 2;
+        const yc = rect.height / 2;
+        const dx = x - xc;
+        const dy = y - yc;
+        item.style.transform = `perspective(1000px) rotateY(${dx / 30}deg) rotateX(${-dy / 30}deg) translateZ(10px)`;
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.transform = 'perspective(1000px) rotateY(0) rotateX(0) translateZ(0)';
+      });
     }
 
     function renderPosts(filterCategory, searchQuery = '') {
@@ -606,170 +913,354 @@
       document.getElementById('listView').style.display = 'block';
 
       const container = document.getElementById('postListContainer');
-      container.innerHTML = ''; 
+      container.innerHTML = '';
 
       let filteredPosts = filterCategory === 'all' ? allPostsData : allPostsData.filter(post => post.category === filterCategory);
-      if(searchQuery) filteredPosts = filteredPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
+      if (searchQuery) {
+        filteredPosts = filteredPosts.filter(post => post.title.toLowerCase().includes(searchQuery.toLowerCase()));
+      }
 
       const titleEl = document.getElementById('currentCategoryTitle');
       scrambleText(titleEl, filterCategory === 'all' ? '> 전체보기' : `> ${filterCategory}`);
       document.getElementById('currentCategoryCount').innerText = `${filteredPosts.length}개의 글을 찾았습니다`;
 
-      if (filteredPosts.length === 0) { container.innerHTML = `<div class="loading-msg">조건에 맞는 글이 없습니다.</div>`; return; }
+      if (filteredPosts.length === 0) {
+        container.appendChild(createLoadingMessage('조건에 맞는 글이 없습니다.'));
+        return;
+      }
 
       filteredPosts.forEach((post, index) => {
-        const postCard = `
-          <div class="post-item-wrapper" style="animation: fadeUp 0.5s ease forwards; opacity:0; animation-delay: ${index*0.1}s">
-            <a href="#" onclick="viewPost('${post.path}', event)" class="post-item">
-              <div class="post-meta"><span class="post-cat-badge">${post.category}</span><time class="post-date">${post.date}</time></div>
-              <h3 class="post-title" data-title="${post.title}">${post.title}</h3>
-              <p class="post-excerpt">클릭하여 읽기 ></p>
-            </a>
-            <div class="card-actions">
-              <button class="btn-icon edit btn-edit" title="수정" data-path="${post.path}" data-sha="${post.sha}" data-title="${post.title}" data-category="${post.category}"><svg viewBox="0 0 24 24"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></button>
-              <button class="btn-icon delete btn-delete" title="삭제" data-path="${post.path}" data-sha="${post.sha}" data-title="${post.title}"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg></button>
-            </div>
-          </div>
-        `;
-        container.innerHTML += postCard;
+        const card = createPostCard(post, index);
+        container.appendChild(card);
       });
-      
-      container.querySelectorAll('.post-title').forEach(el => scrambleText(el, el.getAttribute('data-title')));
-      attachActionListeners(); 
-      
-      container.querySelectorAll('.post-item').forEach(item => {
-        item.addEventListener('mousemove', e => {
-          const rect = item.getBoundingClientRect();
-          const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-          const xc = rect.width/2; const yc = rect.height/2;
-          const dx = x - xc; const dy = y - yc;
-          item.style.transform = `perspective(1000px) rotateY(${dx/30}deg) rotateX(${-dy/30}deg) translateZ(10px)`;
-        });
-        item.addEventListener('mouseleave', () => { item.style.transform = `perspective(1000px) rotateY(0) rotateX(0) translateZ(0)`; });
-      });
+
+      container.querySelectorAll('.post-title').forEach(el => scrambleText(el, el.dataset.title || ''));
+      attachActionListeners();
+      container.querySelectorAll('.post-item').forEach(addCardMotion);
     }
 
     async function viewPost(path, event) {
-      event.preventDefault(); 
-      
+      event.preventDefault();
+
       document.getElementById('listView').style.display = 'none';
       document.getElementById('postView').style.display = 'block';
       const postArea = document.getElementById('singlePostArea');
-      
-      postArea.innerHTML = '<div class="loading-msg">파일 데이터 복호화 중... ⏳</div>';
-      window.scrollTo({top: 0, behavior: 'smooth'});
+
+      postArea.innerHTML = '';
+      postArea.appendChild(createLoadingMessage('파일 데이터 복호화 중... ⏳'));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
 
       try {
         const headers = githubToken ? { 'Authorization': `Bearer ${githubToken}` } : {};
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}?t=${Date.now()}`, { headers });
-        
-        if (!response.ok) throw new Error("파일을 불러오지 못했습니다.");
-        
+
+        if (!response.ok) throw new Error('파일을 불러오지 못했습니다.');
+
         const data = await response.json();
         const htmlString = decodeURIComponent(escape(atob(data.content)));
         const doc = new DOMParser().parseFromString(htmlString, 'text/html');
 
         const title = doc.querySelector('h1') ? doc.querySelector('h1').innerText : '제목 없음';
-        
         const timeEl = doc.querySelector('time');
         const badgeEl = doc.querySelector('.category-badge') || doc.querySelector('.cat-badge');
-        
-        const date = timeEl ? timeEl.innerText : '';
-        const category = badgeEl ? badgeEl.innerText : '';
-        const content = doc.querySelector('.ql-editor') ? doc.querySelector('.ql-editor').innerHTML : '<p>내용이 없습니다.</p>';
+        const rawContent = doc.querySelector('.ql-editor') ? doc.querySelector('.ql-editor').innerHTML : '<p>내용이 없습니다.</p>';
+        const safeContent = sanitizeRichHtml(rawContent);
 
-        postArea.innerHTML = `
-          <div class="single-post-header">
-            <div class="post-meta">
-              ${category ? `<span class="post-cat-badge">${category}</span>` : ''}
-              <span class="post-date" style="color: #aaa;">${date}</span>
-            </div>
-            <h1 class="post-title" style="font-size:2.2rem; margin-top:15px; padding-right:0;">${title}</h1>
-          </div>
-          <div class="ql-editor" style="padding:20px 0;">
-            ${content}
-          </div>
-        `;
+        const fragment = document.createDocumentFragment();
+
+        const header = document.createElement('div');
+        header.className = 'single-post-header';
+
+        const meta = document.createElement('div');
+        meta.className = 'post-meta';
+
+        if (badgeEl && badgeEl.innerText) {
+          const badge = document.createElement('span');
+          badge.className = 'post-cat-badge';
+          badge.textContent = badgeEl.innerText;
+          meta.appendChild(badge);
+        }
+
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'post-date';
+        dateSpan.style.color = '#aaa';
+        dateSpan.textContent = timeEl ? timeEl.innerText : '';
+        meta.appendChild(dateSpan);
+
+        const titleEl = document.createElement('h1');
+        titleEl.className = 'post-title';
+        titleEl.style.fontSize = '2.2rem';
+        titleEl.style.marginTop = '15px';
+        titleEl.style.paddingRight = '0';
+        titleEl.textContent = title;
+
+        header.appendChild(meta);
+        header.appendChild(titleEl);
+
+        const editor = document.createElement('div');
+        editor.className = 'ql-editor';
+        editor.style.padding = '20px 0';
+        editor.innerHTML = safeContent;
+
+        fragment.appendChild(header);
+        fragment.appendChild(editor);
+
+        postArea.innerHTML = '';
+        postArea.appendChild(fragment);
       } catch (error) {
-        postArea.innerHTML = `<div class="loading-msg" style="color: #ef4444;">오류 발생: ${error.message}</div>`;
+        postArea.innerHTML = '';
+        postArea.appendChild(createLoadingMessage(`오류 발생: ${error.message}`, '#ef4444'));
       }
     }
 
     function backToList() {
       document.getElementById('postView').style.display = 'none';
       document.getElementById('listView').style.display = 'block';
-      window.scrollTo({top: 0, behavior: 'smooth'});
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    document.getElementById('backToListBtn').addEventListener('click', backToList);
+    document.getElementById('scrollTopBtn').addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
     document.querySelectorAll('.cat-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active')); e.target.classList.add('active');
-        document.getElementById('searchInput').value = ''; renderPosts(e.target.getAttribute('data-filter'));
+        document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+        e.currentTarget.classList.add('active');
+        document.getElementById('searchInput').value = '';
+        renderPosts(e.currentTarget.getAttribute('data-filter'));
+      });
+    });
+
+    document.querySelectorAll('.tag').forEach(tag => {
+      tag.addEventListener('click', () => {
+        const query = tag.dataset.query || '';
+        const searchInput = document.getElementById('searchInput');
+        searchInput.value = query;
+        searchInput.dispatchEvent(new Event('keyup'));
       });
     });
 
     document.getElementById('searchInput').addEventListener('keyup', (e) => {
-      const activeCategory = document.querySelector('.cat-btn.active').getAttribute('data-filter'); renderPosts(activeCategory, e.target.value);
+      const activeCategory = document.querySelector('.cat-btn.active').getAttribute('data-filter');
+      renderPosts(activeCategory, e.target.value);
     });
 
     function attachActionListeners() {
-      document.querySelectorAll('.btn-delete').forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); targetFileInfo = { path: btn.getAttribute('data-path'), sha: btn.getAttribute('data-sha'), title: btn.getAttribute('data-title') }; document.getElementById('deleteTargetTitle').innerText = `"${targetFileInfo.title}"`; openModal('delete'); }); });
-      document.querySelectorAll('.btn-edit').forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); targetFileInfo = { path: btn.getAttribute('data-path'), sha: btn.getAttribute('data-sha'), title: btn.getAttribute('data-title'), category: btn.getAttribute('data-category') }; openModal('edit'); }); });
+      document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          targetFileInfo = {
+            path: btn.dataset.path,
+            sha: btn.dataset.sha,
+            title: btn.dataset.title
+          };
+          document.getElementById('deleteTargetTitle').innerText = `"${targetFileInfo.title}"`;
+          openModal('delete');
+        });
+      });
+
+      document.querySelectorAll('.btn-edit').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          targetFileInfo = {
+            path: btn.dataset.path,
+            sha: btn.dataset.sha,
+            title: btn.dataset.title,
+            category: btn.dataset.category
+          };
+          openModal('edit');
+        });
+      });
     }
 
     window.addEventListener('DOMContentLoaded', loadPostList);
 
     async function fetchPostContentForEdit() {
-      if (!targetFileInfo) return; document.getElementById('authTitle').innerText = "불러오는 중... ⏳";
+      if (!targetFileInfo) return;
+      document.getElementById('authTitle').innerText = '불러오는 중... ⏳';
+
       try {
-        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFileInfo.path}`, { headers: { 'Authorization': `Bearer ${githubToken}` } });
-        if (!response.ok) throw new Error("파일 내용을 가져오지 못했습니다.");
-        const data = await response.json(); const htmlString = decodeURIComponent(escape(atob(data.content))); const doc = new DOMParser().parseFromString(htmlString, 'text/html');
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFileInfo.path}`, {
+          headers: { 'Authorization': `Bearer ${githubToken}` }
+        });
+
+        if (!response.ok) throw new Error('파일 내용을 가져오지 못했습니다.');
+
+        const data = await response.json();
+        const htmlString = decodeURIComponent(escape(atob(data.content)));
+        const doc = new DOMParser().parseFromString(htmlString, 'text/html');
+
         document.getElementById('postTitle').value = doc.querySelector('h1') ? doc.querySelector('h1').innerText : targetFileInfo.title;
-        quill.root.innerHTML = doc.querySelector('.ql-editor') ? doc.querySelector('.ql-editor').innerHTML : '';
+
+        const editorHtml = doc.querySelector('.ql-editor') ? doc.querySelector('.ql-editor').innerHTML : '';
+        quill.root.innerHTML = sanitizeRichHtml(editorHtml);
+
         const catSelect = document.getElementById('postCategory');
-        for(let i=0; i<catSelect.options.length; i++) { if(catSelect.options[i].value === targetFileInfo.category) { catSelect.selectedIndex = i; break; } }
-        isEditMode = true; targetFileInfo.sha = data.sha; document.getElementById('writeTitle').innerText = "글 수정"; document.getElementById('submitPostBtn').innerText = "수정 완료"; showSection('write');
-      } catch(error) { alert("오류: " + error.message); modal.classList.remove('active'); }
+        for (let i = 0; i < catSelect.options.length; i++) {
+          if (catSelect.options[i].value === targetFileInfo.category) {
+            catSelect.selectedIndex = i;
+            break;
+          }
+        }
+
+        isEditMode = true;
+        targetFileInfo.sha = data.sha;
+        document.getElementById('writeTitle').innerText = '글 수정';
+        document.getElementById('submitPostBtn').innerText = '수정 완료';
+        showSection('write');
+      } catch (error) {
+        alert('오류: ' + error.message);
+        modal.classList.remove('active');
+      }
     }
 
-    document.getElementById('openModalBtn').addEventListener('click', () => { isEditMode = false; document.getElementById('postTitle').value = ''; quill.setContents([]); document.getElementById('postCategory').selectedIndex = 0; document.getElementById('writeTitle').innerText = "새 글 작성"; document.getElementById('submitPostBtn').innerText = "발행하기"; openModal('write'); });
+    document.getElementById('openModalBtn').addEventListener('click', () => {
+      isEditMode = false;
+      document.getElementById('postTitle').value = '';
+      quill.setContents([]);
+      document.getElementById('postCategory').selectedIndex = 0;
+      document.getElementById('writeTitle').innerText = '새 글 작성';
+      document.getElementById('submitPostBtn').innerText = '발행하기';
+      openModal('write');
+    });
 
     document.getElementById('submitPostBtn').addEventListener('click', async () => {
-      const title = document.getElementById('postTitle').value.trim(); const category = document.getElementById('postCategory').value; const content = quill.root.innerHTML;
-      if (!title || content === '<p><br></p>') return alert("제목과 내용을 모두 입력해주세요.");
-      
-      let path = '', date = new Date().toISOString().split('T')[0], commitMessage = ''; 
-      const safeTitle = title.replace(/ /g, '-');
-      const safeCategory = category.replace(/\//g, '_'); 
+      const title = document.getElementById('postTitle').value.trim();
+      const category = document.getElementById('postCategory').value;
+      const rawContent = quill.root.innerHTML;
 
-      if (isEditMode) { path = targetFileInfo.path; commitMessage = `글 수정: [${category}] ${title}`; } 
-      else { path = `posts/${date}-[${safeCategory}]-${safeTitle}.html`; commitMessage = `새 글 작성: [${category}] ${title}`; }
+      if (!title || rawContent === '<p><br></p>') return alert('제목과 내용을 모두 입력해주세요.');
 
-      const fullHtmlContent = `<!DOCTYPE html>\n<html lang="ko">\n<head>\n  <meta charset="UTF-8">\n  <meta name="viewport" content="width=device-width, initial-scale=1.0" />\n  <title>${title} - Jiwoo Blog</title>\n  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />\n  <link href="https://cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">\n  <style>\n    body { font-family: 'Pretendard', monospace, sans-serif; background: #050002; color: #fff; padding: 40px 20px; line-height: 1.8; margin: 0; }\n    .content-box { max-width: 800px; margin: 0 auto; background: rgba(10, 0, 5, 0.85); padding: 50px; border-radius: 20px; box-shadow: 0 0 30px rgba(255,0,255,0.1); border: 1px solid rgba(255, 102, 255, 0.2); }\n    .category-badge { display: inline-block; padding: 4px 12px; background: rgba(0, 221, 255, 0.1); color: #0df; border-radius: 4px; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; border: 1px solid rgba(0,221,255,0.3); font-family: monospace; }\n    time { color: #888; font-size: 0.95rem; margin-left: 10px; font-family: monospace; }\n    h1 { font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; color: #fff; text-shadow: 0 0 10px rgba(255,0,255,0.5); }\n    hr { border: 0; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 40px; }\n    .ql-editor { padding: 0; overflow-y: visible; color: #e4e4e7; font-family: 'Pretendard', sans-serif; }\n    .ql-editor img { max-width: 100%; height: auto; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); }\n    .ql-video { width: 100%; height: 450px; border: none; border-radius: 10px; margin: 20px 0; }\n    .ql-editor pre.ql-syntax { background-color: #000; color: #0f0; padding: 20px; border-radius: 8px; overflow-x: auto; font-family: monospace; border: 1px solid #333; }\n    .ql-editor blockquote { border-left: 4px solid #0df; padding-left: 16px; margin: 20px 0; color: #ccc; font-style: italic; background: rgba(0,221,255,0.05); padding: 15px; border-radius: 0 8px 8px 0; }\n    a.btn-back { display: inline-flex; margin-top: 50px; padding: 10px 20px; background: transparent; color: #888; text-decoration: none; border-radius: 8px; font-weight: 600; transition: 0.3s; border: 1px dashed #555; font-family: monospace; }\n    a.btn-back:hover { background: rgba(0,221,255,0.05); border-color: #0df; color: #0df; box-shadow: 0 0 10px rgba(0,221,255,0.2); }\n    @media (max-width: 600px) { body { padding: 20px 10px; } .content-box { padding: 30px 20px; } .ql-video { height: 250px; } }\n  </style>\n</head>\n<body>\n  <div class="content-box">\n    <div><span class="category-badge">${category}</span><time>${date}</time></div>\n    <h1>${title}</h1><hr>\n    <div class="ql-editor">${content}</div><br>\n    <a href="/index.html" class="btn-back">< 전체 목록으로 돌아가기</a>\n  </div>\n</body>\n</html>`;
+      const sanitizedContent = sanitizeRichHtml(rawContent);
+      const safeTitleSlug = slugifyForFilename(title);
+      const safeCategorySlug = slugifyForFilename(category.replace(/\//g, '_'));
+      const safeTitleText = escapeHtml(title);
+      const safeCategoryText = escapeHtml(category);
+      const date = new Date().toISOString().split('T')[0];
+
+      let path = '';
+      let commitMessage = '';
+
+      if (isEditMode) {
+        path = targetFileInfo.path;
+        commitMessage = `글 수정: [${category}] ${title}`;
+      } else {
+        path = `posts/${date}-[${safeCategorySlug}]-${safeTitleSlug}.html`;
+        commitMessage = `새 글 작성: [${category}] ${title}`;
+      }
+
+      const fullHtmlContent = `<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${safeTitleText} - Jiwoo Blog</title>
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link href="https://cdn.quilljs.com/1.3.6/quill.core.css" rel="stylesheet">
+  <style>
+    body { font-family: 'Pretendard', monospace, sans-serif; background: #050002; color: #fff; padding: 40px 20px; line-height: 1.8; margin: 0; }
+    .content-box { max-width: 800px; margin: 0 auto; background: rgba(10, 0, 5, 0.85); padding: 50px; border-radius: 20px; box-shadow: 0 0 30px rgba(255,0,255,0.1); border: 1px solid rgba(255, 102, 255, 0.2); }
+    .category-badge { display: inline-block; padding: 4px 12px; background: rgba(0, 221, 255, 0.1); color: #0df; border-radius: 4px; font-size: 0.9rem; font-weight: 700; margin-bottom: 10px; border: 1px solid rgba(0,221,255,0.3); font-family: monospace; }
+    time { color: #888; font-size: 0.95rem; margin-left: 10px; font-family: monospace; }
+    h1 { font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; color: #fff; text-shadow: 0 0 10px rgba(255,0,255,0.5); word-break: break-word; }
+    hr { border: 0; height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 40px; }
+    .ql-editor { padding: 0; overflow-y: visible; color: #e4e4e7; font-family: 'Pretendard', sans-serif; }
+    .ql-editor img { max-width: 100%; height: auto; border-radius: 10px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); }
+    .ql-video, .ql-editor iframe { width: 100%; height: 450px; border: none; border-radius: 10px; margin: 20px 0; }
+    .ql-editor pre.ql-syntax, .ql-editor pre { background-color: #000; color: #0f0; padding: 20px; border-radius: 8px; overflow-x: auto; font-family: monospace; border: 1px solid #333; }
+    .ql-editor blockquote { border-left: 4px solid #0df; padding-left: 16px; margin: 20px 0; color: #ccc; font-style: italic; background: rgba(0,221,255,0.05); padding: 15px; border-radius: 0 8px 8px 0; }
+    .ql-editor a { color: #0df; text-decoration: none; }
+    .ql-editor a:hover { text-decoration: underline; }
+    a.btn-back { display: inline-flex; margin-top: 50px; padding: 10px 20px; background: transparent; color: #888; text-decoration: none; border-radius: 8px; font-weight: 600; transition: 0.3s; border: 1px dashed #555; font-family: monospace; }
+    a.btn-back:hover { background: rgba(0,221,255,0.05); border-color: #0df; color: #0df; box-shadow: 0 0 10px rgba(0,221,255,0.2); }
+    @media (max-width: 600px) { body { padding: 20px 10px; } .content-box { padding: 30px 20px; } .ql-video, .ql-editor iframe { height: 250px; } }
+  </style>
+</head>
+<body>
+  <div class="content-box">
+    <div><span class="category-badge">${safeCategoryText}</span><time>${escapeHtml(date)}</time></div>
+    <h1>${safeTitleText}</h1><hr>
+    <div class="ql-editor">${sanitizedContent}</div><br>
+    <a href="/index.html" class="btn-back">&lt; 전체 목록으로 돌아가기</a>
+  </div>
+</body>
+</html>`;
 
       try {
-        const btn = document.getElementById('submitPostBtn'); btn.innerText = "업로드 중..."; btn.disabled = true;
-        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${githubToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: commitMessage, content: btoa(unescape(encodeURIComponent(fullHtmlContent))), ...(isEditMode && targetFileInfo ? {sha: targetFileInfo.sha} : {}) }) });
-        if (response.ok) { 
-          alert(`성공! 확인을 누르면 메인으로 이동합니다.`); 
-          modal.classList.remove('active'); document.getElementById('postTitle').value = ''; quill.setContents([]); isEditMode = false; 
-          loadPostList(); // 목록 즉시 리로드
-        } else throw await response.json();
-      } catch (error) { alert(`실패: ${error.message}`); } finally { const btn = document.getElementById('submitPostBtn'); btn.innerText = isEditMode ? "수정 완료" : "발행하기"; btn.disabled = false; }
+        const btn = document.getElementById('submitPostBtn');
+        btn.innerText = '업로드 중...';
+        btn.disabled = true;
+
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${githubToken}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: commitMessage,
+            content: btoa(unescape(encodeURIComponent(fullHtmlContent))),
+            ...(isEditMode && targetFileInfo ? { sha: targetFileInfo.sha } : {})
+          })
+        });
+
+        if (response.ok) {
+          alert('성공! 확인을 누르면 메인으로 이동합니다.');
+          modal.classList.remove('active');
+          document.getElementById('postTitle').value = '';
+          quill.setContents([]);
+          isEditMode = false;
+          loadPostList();
+        } else {
+          throw await response.json();
+        }
+      } catch (error) {
+        alert(`실패: ${error.message}`);
+      } finally {
+        const btn = document.getElementById('submitPostBtn');
+        btn.innerText = isEditMode ? '수정 완료' : '발행하기';
+        btn.disabled = false;
+      }
     });
 
     document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
       if (!targetFileInfo) return;
       try {
-        const btn = document.getElementById('confirmDeleteBtn'); btn.innerText = "삭제 중..."; btn.disabled = true;
-        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFileInfo.path}`, { method: 'DELETE', headers: { 'Authorization': `Bearer ${githubToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: `글 삭제: ${targetFileInfo.title}`, sha: targetFileInfo.sha }) });
-        if (response.ok) { 
-          alert("삭제 완료!"); 
-          modal.classList.remove('active'); targetFileInfo = null; 
-          loadPostList(); 
-        } else throw await response.json();
-      } catch (error) { alert(`실패: ${error.message}`); } finally { const btn = document.getElementById('confirmDeleteBtn'); btn.innerText = "영구 삭제"; btn.disabled = false; }
+        const btn = document.getElementById('confirmDeleteBtn');
+        btn.innerText = '삭제 중...';
+        btn.disabled = true;
+
+        const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${targetFileInfo.path}`, {
+          method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${githubToken}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            message: `글 삭제: ${targetFileInfo.title}`,
+            sha: targetFileInfo.sha
+          })
+        });
+
+        if (response.ok) {
+          alert('삭제 완료!');
+          modal.classList.remove('active');
+          targetFileInfo = null;
+          loadPostList();
+        } else {
+          throw await response.json();
+        }
+      } catch (error) {
+        alert(`실패: ${error.message}`);
+      } finally {
+        const btn = document.getElementById('confirmDeleteBtn');
+        btn.innerText = '영구 삭제';
+        btn.disabled = false;
+      }
     });
   </script>
 </body>
