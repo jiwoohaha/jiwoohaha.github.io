@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jiwoohaha Blog - Cyber Dashboard</title>
+  <title>Jiwoo Blog - Cyber Dashboard</title>
   
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -46,7 +46,9 @@
       box-shadow: 0 0 10px var(--cyan-main), inset 0 0 5px var(--cyan-main);
       display: flex; justify-content: center; align-items: center;
     }
-    .custom-cursor::before, .custom-cursor::after { content: ''; position: absolute; background: var(--cyan-main); }
+    .custom-cursor::before, .custom-cursor::after {
+      content: ''; position: absolute; background: var(--cyan-main);
+    }
     .custom-cursor::before { width: 4px; height: 1px; left: -4px; box-shadow: 28px 0 0 var(--cyan-main); }
     .custom-cursor::after { width: 1px; height: 4px; top: -4px; box-shadow: 0 28px 0 var(--cyan-main); }
     .custom-cursor.click { width: 12px; height: 12px; background: rgba(0, 221, 255, 0.5); }
@@ -136,7 +138,7 @@
     .cat-btn.active { color: #fff; border-left: 3px solid var(--neon-pink); padding-left: 15px; background: rgba(255,0,255,0.1); font-weight: bold; text-shadow: 0 0 5px var(--neon-pink); }
 
     /* =========================================
-       5. Center Main (Post List & Single Post)
+       5. Center Main (Post List & Scramble)
        ========================================= */
     .main-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 25px; padding-bottom: 10px; border-bottom: 1px solid rgba(255,0,255,0.2); }
     .main-header h2 { font-size: 2rem; font-weight: 800; text-shadow: 0 0 8px var(--neon-pink); letter-spacing: 1px; font-family: 'Pretendard', sans-serif; }
@@ -145,6 +147,12 @@
     .post-list { display: flex; flex-direction: column; gap: 15px; min-height: 300px; }
     .loading-msg { text-align: center; color: var(--cyan-main); font-family: 'Pretendard', sans-serif; padding: 40px 0; animation: blinker 1s linear infinite; }
     
+    /* 🔥 수정된 부분: 사라진 fadeUp 애니메이션 정의 추가 */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .post-item-wrapper { position: relative; }
     .post-item {
       display: block; padding: 20px; border-radius: 12px; background: rgba(255, 255, 255, 0.02);
@@ -165,25 +173,6 @@
     .btn-icon:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
     .btn-icon.delete:hover { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
     .btn-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
-
-    /* --- Single Post View Styles --- */
-    .btn-back-list {
-      background: transparent; border: 1px dashed var(--cyan-main); color: var(--cyan-main);
-      padding: 8px 16px; border-radius: 8px; cursor: pointer; font-family: 'Pretendard', sans-serif; font-size: 0.9rem;
-      margin-bottom: 25px; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s;
-    }
-    .btn-back-list:hover { background: rgba(0, 221, 255, 0.1); box-shadow: 0 0 10px rgba(0,221,255,0.3); color: #fff; }
-    .btn-back-list svg { width: 16px; height: 16px; }
-
-    .single-post-header { border-bottom: 1px dashed rgba(255,0,255,0.3); padding-bottom: 15px; margin-bottom: 25px; }
-    .single-post-title { font-size: 2.2rem; color: #fff; text-shadow: 0 0 10px var(--neon-pink); margin: 10px 0; font-family: 'Pretendard', sans-serif; }
-    .single-post-body { color: #e4e4e7; line-height: 1.8; font-family: 'Pretendard', sans-serif; font-size: 1.05rem; }
-    .single-post-body img { max-width: 100%; border-radius: 12px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 15px rgba(255,0,255,0.1); }
-    .single-post-body pre { background: #050505; padding: 20px; border-radius: 12px; overflow-x: auto; border: 1px solid #333; color: var(--matrix-green); font-family: monospace; box-shadow: inset 0 0 10px rgba(0,255,0,0.05); }
-    .single-post-body blockquote { border-left: 4px solid var(--cyan-main); padding-left: 16px; margin: 20px 0; color: #aaa; font-style: italic; background: rgba(0,221,255,0.05); padding: 15px; border-radius: 0 8px 8px 0; }
-    .single-post-body a { color: var(--cyan-main); text-decoration: none; }
-    .single-post-body a:hover { text-decoration: underline; text-shadow: 0 0 5px var(--cyan-main); }
-
 
     /* =========================================
        6. Right Sidebar (Widgets)
@@ -310,7 +299,7 @@
               About Me <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
             <div class="about-content" id="aboutContent">
-              <span class="highlight">정보보호 변호사</span>를 꿈꾸는 스마트보안학부 25학번 <span class="highlight">박지우</span>입니다.<br><br>해킹 방어, 시스템 취약점 분석, 그리고 안전한 개발 환경 구축에 관심이 많습니다.
+              <span class="highlight">정보보호 변호사</span>를 꿈꾸는 스마트보안학부 25학번 <span class="highlight">박지우</span>입니다.<br><br>
             </div>
           </div>
 
@@ -470,6 +459,7 @@
 
     const termInput = document.getElementById('termInput');
     const termOutput = document.getElementById('termOutput');
+    const termContainer = document.getElementById('terminalContainer');
     function printTerm(html) { termOutput.innerHTML += `<p>${html}</p>`; termOutput.scrollTop = termOutput.scrollHeight; }
     termInput.addEventListener('keydown', function(e) {
       if (e.key === 'Enter') {
@@ -583,7 +573,6 @@
     }
 
     function renderPosts(filterCategory, searchQuery = '') {
-      // 리스트 뷰 표시, 포스트 뷰 숨기기
       document.getElementById('postView').style.display = 'none';
       document.getElementById('listView').style.display = 'block';
 
@@ -600,7 +589,6 @@
       if (filteredPosts.length === 0) { container.innerHTML = `<div class="loading-msg">조건에 맞는 글이 없습니다.</div>`; return; }
 
       filteredPosts.forEach((post, index) => {
-        // 🔥 수정됨: a 태그 이동 막고 viewPost 함수 호출 (SPA 연동)
         const postCard = `
           <div class="post-item-wrapper" style="animation: fadeUp 0.5s ease forwards; opacity:0; animation-delay: ${index*0.1}s">
             <a href="#" onclick="viewPost('${post.path}', event)" class="post-item">
@@ -632,13 +620,9 @@
       });
     }
 
-    // ==========================================
-    // 💡 [핵심] 글 내용 메인 화면에 띄우기 (SPA 방식)
-    // ==========================================
     async function viewPost(path, event) {
-      event.preventDefault(); // 페이지 이동 방지
+      event.preventDefault(); 
       
-      // 목록 숨기고 글 보기 영역 표시
       document.getElementById('listView').style.display = 'none';
       document.getElementById('postView').style.display = 'block';
       const postArea = document.getElementById('singlePostArea');
@@ -648,7 +632,6 @@
 
       try {
         const headers = githubToken ? { 'Authorization': `Bearer ${githubToken}` } : {};
-        // API를 통해 즉시 파일 내용을 가져옴 (캐시/딜레이 무시)
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}?t=${Date.now()}`, { headers });
         
         if (!response.ok) throw new Error("파일을 불러오지 못했습니다.");
@@ -657,22 +640,25 @@
         const htmlString = decodeURIComponent(escape(atob(data.content)));
         const doc = new DOMParser().parseFromString(htmlString, 'text/html');
 
-        // 저장된 HTML 구조에서 필요한 데이터만 쏙 빼내기
         const title = doc.querySelector('h1') ? doc.querySelector('h1').innerText : '제목 없음';
-        const date = doc.querySelector('time') ? doc.querySelector('time').innerText : '';
-        const category = doc.querySelector('.category-badge') ? doc.querySelector('.category-badge').innerText : '';
+        
+        // 작성된 글의 HTML 구조에 맞춰 날짜와 카테고리를 가져옴
+        const timeEl = doc.querySelector('time');
+        const badgeEl = doc.querySelector('.category-badge') || doc.querySelector('.cat-badge');
+        
+        const date = timeEl ? timeEl.innerText : '';
+        const category = badgeEl ? badgeEl.innerText : '';
         const content = doc.querySelector('.ql-editor') ? doc.querySelector('.ql-editor').innerHTML : '<p>내용이 없습니다.</p>';
 
-        // 화면에 뿌려주기
         postArea.innerHTML = `
           <div class="single-post-header">
-            <div class="single-post-meta">
-              <span class="post-cat-badge">${category}</span>
-              <span class="post-date" style="color: #aaa; font-family: monospace;">${date}</span>
+            <div class="post-meta">
+              ${category ? `<span class="post-cat-badge">${category}</span>` : ''}
+              <span class="post-date" style="color: #aaa;">${date}</span>
             </div>
-            <h1 class="single-post-title">${title}</h1>
+            <h1 class="post-title" style="font-size:2.2rem; margin-top:15px; padding-right:0;">${title}</h1>
           </div>
-          <div class="single-post-body ql-editor">
+          <div class="ql-editor" style="padding:20px 0;">
             ${content}
           </div>
         `;
@@ -681,13 +667,11 @@
       }
     }
 
-    // 뒤로 가기 버튼 로직
     function backToList() {
       document.getElementById('postView').style.display = 'none';
       document.getElementById('listView').style.display = 'block';
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
-
 
     document.querySelectorAll('.cat-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -740,7 +724,7 @@
         const btn = document.getElementById('submitPostBtn'); btn.innerText = "업로드 중..."; btn.disabled = true;
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${githubToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: commitMessage, content: btoa(unescape(encodeURIComponent(fullHtmlContent))), ...(isEditMode && targetFileInfo ? {sha: targetFileInfo.sha} : {}) }) });
         if (response.ok) { 
-          alert(`성공! 확인을 누르면 메인으로 이동합니다.`); 
+          alert(`성공! 1~2분 뒤 반영됩니다.`); 
           modal.classList.remove('active'); document.getElementById('postTitle').value = ''; quill.setContents([]); isEditMode = false; 
           loadPostList(); // 목록 즉시 리로드
         } else throw await response.json();
