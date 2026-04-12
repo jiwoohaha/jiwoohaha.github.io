@@ -147,10 +147,10 @@
     .post-list { display: flex; flex-direction: column; gap: 15px; min-height: 300px; }
     .loading-msg { text-align: center; color: var(--cyan-main); font-family: 'Pretendard', sans-serif; padding: 40px 0; animation: blinker 1s linear infinite; }
     
-    /* 🔥 복구된 부분 1: 글 목록 애니메이션 (이게 없어서 목록이 안 보였음!) 🔥 */
+    /* 🔥 수정된 부분: 사라진 fadeUp 애니메이션 정의 추가 */
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .post-item-wrapper { position: relative; }
@@ -173,24 +173,6 @@
     .btn-icon:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
     .btn-icon.delete:hover { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
     .btn-icon svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; }
-
-    /* 🔥 복구된 부분 2: 단일 글(Single Post) 안쪽 디자인 UI (이게 없어서 아이콘이 깨짐!) 🔥 */
-    .btn-back-list { 
-      display: inline-flex; align-items: center; gap: 8px; background: transparent; border: 1px dashed var(--cyan-main); 
-      color: var(--cyan-main); padding: 8px 16px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; 
-      margin-bottom: 20px; transition: 0.3s; font-family: 'Pretendard', sans-serif; 
-    }
-    .btn-back-list:hover { background: rgba(0, 221, 255, 0.1); box-shadow: 0 0 10px rgba(0,221,255,0.3); color: #fff; }
-    .btn-back-list svg { width: 20px; height: 20px; flex-shrink: 0; } /* SVG 크기 강력 고정 */
-    
-    .single-post-header { border-bottom: 1px dashed rgba(255,0,255,0.3); padding-bottom: 15px; margin-bottom: 20px; }
-    #singlePostArea .ql-editor { font-size: 1.05rem; line-height: 1.8; color: #e4e4e7; font-family: 'Pretendard', sans-serif; padding: 0; }
-    #singlePostArea .ql-editor img { max-width: 100%; border-radius: 12px; margin: 20px 0; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 0 15px rgba(255,0,255,0.1); }
-    #singlePostArea .ql-editor pre { background: #050505; padding: 20px; border-radius: 12px; overflow-x: auto; border: 1px solid #333; color: var(--matrix-green); font-family: monospace; }
-    #singlePostArea .ql-editor blockquote { border-left: 4px solid var(--cyan-main); padding-left: 16px; margin: 20px 0; color: #aaa; font-style: italic; background: rgba(0,221,255,0.05); padding: 15px; border-radius: 0 8px 8px 0; }
-    #singlePostArea .ql-editor a { color: var(--cyan-main); text-decoration: none; }
-    #singlePostArea .ql-editor a:hover { text-decoration: underline; text-shadow: 0 0 5px var(--cyan-main); }
-
 
     /* =========================================
        6. Right Sidebar (Widgets)
@@ -477,6 +459,7 @@
 
     const termInput = document.getElementById('termInput');
     const termOutput = document.getElementById('termOutput');
+    const termContainer = document.getElementById('terminalContainer');
     function printTerm(html) { termOutput.innerHTML += `<p>${html}</p>`; termOutput.scrollTop = termOutput.scrollHeight; }
     termInput.addEventListener('keydown', function(e) {
       if (e.key === 'Enter') {
@@ -659,6 +642,7 @@
 
         const title = doc.querySelector('h1') ? doc.querySelector('h1').innerText : '제목 없음';
         
+        // 작성된 글의 HTML 구조에 맞춰 날짜와 카테고리를 가져옴
         const timeEl = doc.querySelector('time');
         const badgeEl = doc.querySelector('.category-badge') || doc.querySelector('.cat-badge');
         
@@ -740,9 +724,9 @@
         const btn = document.getElementById('submitPostBtn'); btn.innerText = "업로드 중..."; btn.disabled = true;
         const response = await fetch(`https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${path}`, { method: 'PUT', headers: { 'Authorization': `Bearer ${githubToken}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }, body: JSON.stringify({ message: commitMessage, content: btoa(unescape(encodeURIComponent(fullHtmlContent))), ...(isEditMode && targetFileInfo ? {sha: targetFileInfo.sha} : {}) }) });
         if (response.ok) { 
-          alert(`성공! 확인을 누르면 메인으로 이동합니다.`); 
+          alert(`성공! 1~2분 뒤 반영됩니다.`); 
           modal.classList.remove('active'); document.getElementById('postTitle').value = ''; quill.setContents([]); isEditMode = false; 
-          loadPostList(); 
+          loadPostList(); // 목록 즉시 리로드
         } else throw await response.json();
       } catch (error) { alert(`실패: ${error.message}`); } finally { const btn = document.getElementById('submitPostBtn'); btn.innerText = isEditMode ? "수정 완료" : "발행하기"; btn.disabled = false; }
     });
